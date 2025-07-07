@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نقشه راه نهایی برای تسلط بر پایتون و استخدام</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #1e1e2f;
+            color: #dcdceb;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #282a36;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        h1, h2, h3 { border-bottom: 2px solid #6272a4; padding-bottom: 10px; }
+        h1 { font-size: 2.5em; color: #ffb86c; text-align: center; }
+        h2 { font-size: 2em; margin-top: 50px; color: #ffb86c; }
+        .concept-box {
+            background-color: #2f3241;
+            border: 2px solid #50fa7b;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 0 15px rgba(80, 250, 123, 0.3);
+        }
+        .concept-box h3 { color: #ffb86c; text-align: center; margin-top: 0; font-size: 1.6em; }
+        .concept-box p { font-size: 1.1em; text-align: center; color: #f8f8f2; }
+        .concept-box ol { padding-right: 20px; }
+        .concept-box ol li { margin-bottom: 15px; }
+        .concept-box ol li strong { color: #8be9fd; }
+        .roadmap-container { background-color: #2f3241; border: 1px solid #6272a4; border-radius: 8px; padding: 20px; margin-bottom: 40px; }
+        .roadmap-container h3 { color: #ffb86c; border-bottom: 1px solid #6272a4; padding-bottom: 10px; margin-top: 0; text-align: center; font-size: 1.5em; }
+        .roadmap-list { list-style: none; padding-right: 0; counter-reset: roadmap-counter; }
+        .roadmap-list li { counter-increment: roadmap-counter; margin-bottom: 12px; position: relative; padding-right: 45px; font-size: 1.1em; }
+        .roadmap-list li::before {
+            content: counter(roadmap-counter);
+            position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            background-color: #ff79c6; color: #f8f8f2;
+            width: 30px; height: 30px; border-radius: 50%;
+            text-align: center; line-height: 30px; font-weight: bold; font-family: 'Fira Code', monospace;
+        }
+        .roadmap-list li a { text-decoration: none; color: #8be9fd; font-weight: bold; transition: color 0.2s; }
+        .roadmap-list li a:hover { color: #50fa7b; text-decoration: underline; }
+        .roadmap-list li small { color: #dcdceb; display: block; font-size: 0.9em; font-weight: normal; }
+        .code-block { background-color: #44475a; border-left: 5px solid #bd93f9; margin: 20px 0; padding: 15px 20px; border-radius: 8px; }
+        .code-block h3 { margin-top: 0; color: #8be9fd; font-size: 1.4em; border-bottom: none; }
+        .code-block h4 { color: #f1fa8c; margin-top: 20px; margin-bottom: 5px; border-bottom: 1px dotted #6272a4; }
+        .code-block p { margin-bottom: 15px; color: #f8f8f2; }
+        pre { background-color: #1a1b26; color: #c0caf5; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word; direction: ltr; text-align: left; }
+        code { font-family: 'Fira Code', 'Courier New', monospace; font-size: 1em; }
+        #backToTop {
+            display: none; position: fixed; bottom: 20px; left: 30px; z-index: 99;
+            font-size: 18px; border: none; outline: none; background-color: #ff79c6;
+            color: white; cursor: pointer; padding: 15px; border-radius: 50%;
+            width: 50px; height: 50px; line-height: 20px;
+        }
+        #backToTop:hover { background-color: #ff92d3; }
+        footer { text-align: center; margin-top: 40px; padding: 20px; border-top: 2px solid #6272a4; color: #6272a4; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 نقشه راه نهایی برای تسلط بر پایتون و استخدام 🚀</h1>
+    <p style="text-align: center; font-size: 1.2em;">از تئوری تا پروژه: هرآنچه برای تبدیل شدن به یک توسعه‌دهنده پایتون حرفه‌ای نیاز دارید.</p>
+
+    <div class="concept-box">
+        <h3>💼 از دانش تا استخدام: چگونه از این راهنما استفاده کنیم؟</h3>
+        <p>دانش تئوریک به تنهایی کافی نیست. شرکت‌ها به دنبال توانایی شما در **ساختن** هستند. این نقشه راه را به سکوی پرتاب خود تبدیل کنید:</p>
+        <ol>
+            <li><strong>یاد بگیرید و درک کنید:</strong> مفاهیم هر سطح را به صورت عمیق یاد بگیرید. فقط حفظ نکنید، دلیل وجود هر دستور را بفهمید.</li>
+            <li><strong>بسازید و به کار ببرید:</strong> بعد از هر چند سطح، دانش خود را با ساخت یک پروژه کوچک به چالش بکشید. این کار دانش شما را تثبیت می‌کند.</li>
+            <li><strong>نشان دهید و به اشتراک بگذارید:</strong> تمام پروژه‌های خود را، هرچقدر هم کوچک، روی **GitHub** قرار دهید. یک پروفایل تمیز GitHub بهترین رزومه برای یک توسعه‌دهنده است.</li>
+            <li><strong>تمرین کنید و مسأله حل کنید:</strong> مهارت حل مسئله خود را با تمرین در سایت‌هایی مانند LeetCode یا Codewars تقویت کنید.</li>
+        </ol>
+        <p style="font-weight: bold; color: #50fa7b;">با دنبال کردن این ۴ قدم، شما فقط یک فرد مطلع نخواهید بود، بلکه یک توسعه‌دهنده واقعی با نمونه‌کارهای قابل ارائه خواهید بود.</p>
+    </div>
+
+    <div class="roadmap-container">
+        <h3>🗺️ نقشه راه یادگیری (برای پرش روی هر بخش کلیک کنید)</h3>
+        <ol class="roadmap-list">
+            <li><a href="#level-1">سطح ۱: مبانی و اصول اولیه</a><small>یادگیری الفبای پایتون و ساخت اولین متغیرها.</small></li>
+            <li><a href="#level-2">سطح ۲: ساختارها و جریان کنترل</a><small>کنترل منطق برنامه و کار با لیست‌ها و دیکشنری‌ها.</small></li>
+            <li><a href="#level-3">سطح ۳: توابع</a><small>نوشتن کدهای تمیز، ماژولار و قابل استفاده مجدد.</small></li>
+            <li><a href="#level-4">سطح ۴: برنامه نویسی شیءگرا (OOP)</a><small>طراحی نرم‌افزار مانند یک معمار حرفه‌ای.</small></li>
+            <li><a href="#level-5">سطح ۵: مفاهیم پیشرفته</a><small>یادگیری جادوی پایتون با دکوراتورها و مدیریت خطا.</small></li>
+            <li><a href="#level-6">سطح ۶: قدرت کتابخانه استاندارد</a><small>استفاده از ابزارهای آماده و قدرتمند پایتون.</small></li>
+            <li><a href="#level-7">سطح ۷: بهترین شیوه‌های حرفه‌ای</a><small>کدنویسی مانند یک توسعه‌دهنده باتجربه در شرکت‌های بزرگ.</small></li>
+            <li><a href="#level-8">سطح ۸: اکوسیستم پایتون (قدم‌های بعدی)</a><small>انتخاب مسیر تخصصی و ورود به دنیای حرفه‌ای‌ها.</small></li>
+        </ol>
+    </div>
+
+    <h2 id="level-1">سطح ۱: 📌 مبانی و اصول اولیه</h2>
+    <div class="code-block">
+        <h3>🖨️ دستورات پایه</h3>
+        <pre><code>print("Hello, Python!")
+name = input("Enter your name: ")
+x = 10</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>📊 انواع داده (Data Types)</h3>
+        <pre><code>int_variable = 5      # عدد صحیح
+float_variable = 5.5  # عدد اعشاری
+string_variable = "H" # رشته
+list_variable = [1,2] # لیست (قابل تغییر)
+tuple_variable = (1,2)# تاپل (غیرقابل تغییر)
+set_variable = {1,2}  # مجموعه (بدون تکرار)
+dict_variable = {"k": "v"} # دیکشنری
+bool_variable = True  # بولین
+none_variable = None  # تهی</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>🔄 تبدیل انواع داده (Type Conversion)</h3>
+        <pre><code>int("10"); float("5.5"); str(123)</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>✍️ قالب‌بندی رشته‌ها (String Formatting)</h3>
+        <pre><code>name = "Alice"
+print(f"Name: {name}") # f-string (بهترین روش)</code></pre>
+    </div>
+    
+    <h2 id="level-2">سطح ۲: ⚙️ ساختارها و جریان کنترل</h2>
+    <div class="code-block">
+        <h3>🤔 دستورات شرطی و حلقه‌ها</h3>
+        <pre><code>if age < 18:
+    print("Minor")
+elif 18 <= age < 65:
+    print("Adult")
+for i in range(5):
+    if i == 3: continue
+    if i == 4: break
+status = "Adult" if age >= 18 else "Minor"</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>🚀 لیست فهیم (List Comprehension)</h3>
+        <pre><code>squares = [x**2 for x in range(10)]</code></pre>
+    </div>
+
+    <h2 id="level-3">سطح ۳: 🧩 توابع (Functions)</h2>
+    <div class="code-block">
+        <h3>🔧 تعریف و آرگومان‌های توابع</h3>
+        <pre><code>def greet(name, msg="Hi"):
+    return f"{msg}, {name}!"
+def sum_all(*args): # args is a tuple
+    return sum(args)
+def print_info(**kwargs): # kwargs is a dict
+    for k, v in kwargs.items(): print(f"{k}: {v}")</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>⚡️ لامبدا، بازگشتی و ژنراتور</h3>
+        <pre><code>add = lambda a, b: a + b
+def factorial(n): return 1 if n <= 1 else n*factorial(n-1)
+def number_gen(n):
+    for i in range(n): yield i</code></pre>
+    </div>
+
+    <h2 id="level-4">سطح ۴: 🏛️ برنامه نویسی شیءگرا (OOP)</h2>
+    <div class="code-block">
+        <h3>🏗️ کلاس، شیء و اصول OOP</h3>
+        <p>
+            <b>کپسوله‌سازی (Encapsulation):</b> قرار دادن داده‌ها (متغیرها) و متدهایی که روی آن داده‌ها کار می‌کنند در یک واحد به نام کلاس.
+            <br>
+            <b>وراثت (Inheritance):</b> ایجاد یک کلاس جدید (فرزند) از روی یک کلاس موجود (والد).
+            <br>
+            <b>چندریختی (Polymorphism):</b> امکان استفاده از یک رابط مشترک (مثلاً یک متد) برای انواع مختلف اشیاء.
+            <br>
+            <b>انتزاع (Abstraction):</b> پنهان کردن جزئیات پیچیده و نمایش تنها اطلاعات ضروری.
+        </p>
+        <pre><code>class Animal:
+    def __init__(self, name): self.name = name
+    def speak(self): raise NotImplementedError
+class Dog(Animal):
+    def speak(self): return "Woof!" # Polymorphism</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>🪄 متدهای جادویی (Dunder Methods)</h3>
+        <pre><code>class Vector:
+    def __init__(self, x, y): self.x, self.y = x, y
+    def __repr__(self): return f"Vector({self.x}, {self.y})"
+    def __add__(self, other): return Vector(self.x+other.x, self.y+other.y)</code></pre>
+    </div>
+
+    <h2 id="level-5">سطح ۵: 🚀 مفاهیم پیشرفته</h2>
+    <div class="code-block">
+        <h3>✨ دکوراتورها و مدیران محتوا</h3>
+        <pre><code>def my_decorator(func):
+    def wrapper(): func()
+    return wrapper
+with open('file.txt', 'w') as f:
+    f.write('hi')</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>🛡️ مدیریت خطا (Exception Handling)</h3>
+        <pre><code>try:
+    x = 10 / 0
+except ZeroDivisionError as e:
+    print(f"Error: {e}")
+finally:
+    print("Execution finished.")</code></pre>
+    </div>
+
+    <h2 id="level-6">سطح ۶: 📚 قدرت کتابخانه استاندارد</h2>
+    <div class="code-block">
+        <h3>🧮 ماژول `math`: جعبه ابزار ریاضیات</h3>
+        <pre><code>import math
+math.pi          # عدد پی
+math.ceil(4.2)   # گرد کردن به بالا: 5
+math.sqrt(81)    # جذر: 9.0
+math.log10(100)  # لگاریتم در مبنای ۱۰: 2.0
+math.factorial(5)# فاکتوریل: 120</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>🧩 ماژول‌های پرکاربرد دیگر</h3>
+        <pre><code>import random, datetime, os
+from pathlib import Path
+from collections import Counter
+random.randint(1, 10)
+now = datetime.datetime.now()
+os.getcwd()
+p = Path('my_dir/')
+counts = Counter(['a', 'b', 'a'])</code></pre>
+    </div>
+
+    <h2 id="level-7">سطح ۷: 🏆 بهترین شیوه‌های حرفه‌ای</h2>
+    <div class="concept-box">
+        <h3>🧘 فلسفه پایتون (The Zen of Python)</h3>
+        <p>این اصول راهنمای نوشتن کدهای "پایتونیک" هستند. درک آن‌ها شما را از یک کدنویس به یک هنرمند تبدیل می‌کند.</p>
+        <pre><code>import this
+# Beautiful is better than ugly.
+# Explicit is better than implicit.
+# Simple is better than complex.
+# ...</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>✍️ تایپ هینتینگ و تست‌نویسی</h3>
+        <pre><code>from typing import List
+def greet(names: List[str]) -> None:
+    for name in names: print(f"Hi, {name}")
+def add(x, y): return x + y
+def test_add(): assert add(2, 3) == 5</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>📦 مدیریت پروژه و وابستگی‌ها</h3>
+        <pre><code># 1. ساخت محیط مجازی
+python -m venv venv
+# 2. فعال‌سازی (ویندوز: venv\Scripts\activate)
+# 3. نصب بسته‌ها
+pip install requests
+# 4. ذخیره وابستگی‌ها
+pip freeze > requirements.txt</code></pre>
+    </div>
+    <div class="code-block">
+        <h3>🔑 لاگ‌گیری و متغیرهای محیطی</h3>
+        <p><b>لاگ‌گیری:</b> به جای `print`، از `logging` برای ثبت وقایع برنامه در محیط‌های واقعی استفاده کنید.
+        <br><b>متغیرهای محیطی:</b> هرگز اطلاعات حساس (مثل کلید API) را مستقیم در کد ننویسید. آن‌ها را از طریق متغیرهای محیطی بخوانید.</p>
+        <pre><code>import logging, os
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.info("This is an info message.")
+api_key = os.getenv("MY_API_KEY")</code></pre>
+    </div>
+
+    <h2 id="level-8">سطح ۸: 🌍 اکوسیستم پایتون (قدم‌های بعدی)</h2>
+    <div class="code-block">
+        <h3>🚀 انتخاب مسیر تخصصی</h3>
+        <p>پس از تسلط بر موارد بالا، بسته به علاقه خود، یکی از مسیرهای زیر را دنبال کنید:</p>
+        <ul class="ecosystem-list" style="list-style: none; padding: 0;">
+            <li style="background: #44475a; margin-bottom: 10px; padding: 15px; border-radius: 5px; color: #f8f8f2;"><strong style="color: #ffb86c;">📊 علم داده و هوش مصنوعی:</strong> NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch</li>
+            <li style="background: #44475a; margin-bottom: 10px; padding: 15px; border-radius: 5px; color: #f8f8f2;"><strong style="color: #ffb86c;">🌐 توسعه وب (Backend):</strong> Django, Flask, FastAPI</li>
+            <li style="background: #44475a; margin-bottom: 10px; padding: 15px; border-radius: 5px; color: #f8f8f2;"><strong style="color: #ffb86c;">🤖 اتوماسیون و DevOps:</strong> Requests, BeautifulSoup, Selenium, Ansible</li>
+        </ul>
+    </div>
+
+    <button onclick="topFunction()" id="backToTop" title="Go to top">↑</button>
+
+    <footer>
+        <p>این دانشنامه، نقشه راه شما برای فتح دنیای پایتون است.
+            <br>
+            حالا نوبت شماست که بسازید، به اشتراک بگذارید و بدرخشید. موفق باشید!
+        </p>
+    </footer>
+</div>
+
+<script>
+    var mybutton = document.getElementById("backToTop");
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+</body>
+</html>
