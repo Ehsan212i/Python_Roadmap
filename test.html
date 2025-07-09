@@ -127,7 +127,7 @@
                             <li class="clickable-item" data-modal-target="#lists-modal"><span class="item-number">4</span><span class="item-icon">📋</span><span class="item-text">لیست‌ها</span><code class="item-code">(list)</code></li>
                             <li class="clickable-item" data-modal-target="#tuples-modal"><span class="item-number">5</span><span class="item-icon">🔒</span><span class="item-text">تاپل‌ها</span><code class="item-code">(tuple)</code></li>
                             <li class="clickable-item" data-modal-target="#dictionaries-modal"><span class="item-number">6</span><span class="item-icon">📖</span><span class="item-text">دیکشنری‌ها</span><code class="item-code">(dict)</code></li>
-                            <li><span class="item-number">7</span><span class="item-icon">🔵</span><span class="item-text">مجموعه‌ها</span><code class="item-code">(set)</code></li>
+                            <li class="clickable-item" data-modal-target="#sets-modal"><span class="item-number">7</span><span class="item-icon">🔵</span><span class="item-text">مجموعه‌ها</span><code class="item-code">(set)</code></li>
                         </ul>
                     </div>
                 </div>
@@ -701,6 +701,87 @@ for i in range(count):
 average = sum(students.values()) / len(students)
 print("\nلیست نمرات:", students)
 print(f"میانگین نمرات: {average}")</code></pre>
+            </article>
+        </div>
+    </div>
+
+    <!-- Modal for Sets -->
+    <div class="modal-overlay" id="sets-modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">×</span>
+            <article class="modal-article">
+                <h3>۱. مجموعه (Set) چیست؟</h3>
+                <p>set یک ساختار نامرتب (unordered)، بدون عنصر تکراری و قابل تغییر (mutable) است. با آکولاد <code>{}</code> ساخته می‌شود:</p>
+                <pre><code>my_set = {1, 2, 3, 4}</code></pre>
+                <p>یا با استفاده از تابع <code>set()</code>:</p>
+                <pre><code>unique_chars = set("hello")   # {'h', 'e', 'l', 'o'}</code></pre>
+
+                <h3>۲. ویژگی‌های مهم مجموعه‌ها</h3>
+                <table>
+                    <thead><tr><th>ویژگی</th><th>توضیح</th></tr></thead>
+                    <tbody>
+                        <tr><td>نامرتب</td><td>ترتیب عناصر مشخص نیست (برخلاف لیست)</td></tr>
+                        <tr><td>بدون تکرار</td><td>فقط یک نسخه از هر مقدار ذخیره می‌شود</td></tr>
+                        <tr><td>قابل تغییر</td><td>می‌توان عضو اضافه/حذف کرد</td></tr>
+                        <tr><td>عناصر باید تغییرناپذیر باشند</td><td>مثل int, float, str, tuple</td></tr>
+                    </tbody>
+                </table>
+                <p>مثال:</p>
+                <pre><code>s = {1, 2, 2, 3, 4, 4, 5}
+print(s)  # {1, 2, 3, 4, 5}</code></pre>
+
+                <h3>۳. افزودن و حذف عناصر</h3>
+                <h4>افزودن:</h4>
+                <pre><code>s.add(6)             # افزودن یک عنصر
+s.update([7, 8, 9])  # افزودن چند عنصر</code></pre>
+                <h4>حذف:</h4>
+                <pre><code>s.remove(3)     # اگر عنصر وجود نداشته باشد خطا می‌دهد
+s.discard(10)   # بدون خطا حذف می‌کند اگر وجود نداشته باشد
+s.pop()         # حذف تصادفی یک عنصر
+s.clear()       # حذف همه عناصر</code></pre>
+
+                <h3>۴. عملیات ریاضی روی مجموعه‌ها</h3>
+                <table>
+                    <thead><tr><th>عملیات</th><th>توضیح</th><th>مثال</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>union()</code> یا <code>|</code></td><td>اجتماع دو مجموعه</td><td><code>A | B</code></td></tr>
+                        <tr><td><code>intersection()</code> یا <code>&</code></td><td>اشتراک دو مجموعه</td><td><code>A & B</code></td></tr>
+                        <tr><td><code>difference()</code> یا <code>-</code></td><td>تفاضل (فقط در A نه B)</td><td><code>A - B</code></td></tr>
+                        <tr><td><code>symmetric_difference()</code> یا <code>^</code></td><td>عناصر متفاوت در هر دو مجموعه</td><td><code>A ^ B</code></td></tr>
+                    </tbody>
+                </table>
+                <p>مثال:</p>
+                <pre><code>A = {1, 2, 3}
+B = {2, 3, 4}
+
+print(A | B)   # {1, 2, 3, 4}
+print(A & B)   # {2, 3}
+print(A - B)   # {1}
+print(A ^ B)   # {1, 4}</code></pre>
+
+                <h3>۵. بررسی عضویت</h3>
+                <pre><code>if 3 in A:
+    print("3 در مجموعه A وجود دارد")</code></pre>
+
+                <h3>۶. تبدیل لیست به مجموعه (برای حذف تکراری‌ها)</h3>
+                <pre><code>nums = [1, 2, 2, 3, 3, 3, 4]
+unique_nums = set(nums)
+print(unique_nums)  # {1, 2, 3, 4}</code></pre>
+
+                <h3>۷. مجموعه‌های غیرقابل تغییر (frozenset)</h3>
+                <p><code>frozenset</code> مانند <code>set</code> است اما غیرقابل تغییر:</p>
+                <pre><code>fs = frozenset([1, 2, 3])
+# fs.add(4)  → خطا می‌دهد</code></pre>
+
+                <h3>۸. مثال جامع</h3>
+                <p>برنامه‌ای که از کاربر لیستی از اعداد می‌گیرد و فقط اعداد غیرتکراری را نمایش می‌دهد:</p>
+                <pre><code>nums = input("اعداد را با فاصله وارد کنید: ")
+num_list = nums.split()
+unique_nums = set(num_list)
+
+print("اعداد بدون تکرار:")
+for n in unique_nums:
+    print(n)</code></pre>
             </article>
         </div>
     </div>
