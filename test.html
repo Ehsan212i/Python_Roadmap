@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کور سینتکس پایتون - نسخه مودال</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --card-bg: rgba(45, 55, 72, 0.85);
+            --text-color: #f0f0f0;
+            --primary-color: #38bdf8;
+            --python-blue: #3776ab;
+            --python-yellow: #ffd343;
+            --red-accent: #e53e3e;
+            --code-bg: #1a202c;
+            --overlay-color: rgba(30, 41, 59, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif; color: var(--text-color);
+            min-height: 100vh;
+        }
+        body.modal-open {
+            overflow: hidden; /* Prevent background scroll when modal is open */
+        }
+
+        /* iFrame Background */
+        .iframe-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; pointer-events: none; }
+        .iframe-background iframe { width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: none; }
+        .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--overlay-color); backdrop-filter: blur(3px); z-index: -1; }
+
+        .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        
+        header { text-align: center; margin-bottom: 40px; }
+        .main-title { font-size: 3rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; justify-content: center; gap: 20px; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .main-title .python-logo { width: 60px; height: 60px; }
+        .subtitle { font-size: 1.5rem; color: var(--primary-color); margin-top: 10px; }
+        .author { margin-top: 20px; color: #a0aec0; font-family: monospace; font-size: 1rem; }
+
+        .main-content { display: flex; gap: 30px; align-items: flex-start; }
+        .cheatsheet-grid { flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+
+        .card { background-color: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid rgba(56, 189, 248, 0.2); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+        .card-header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background-color: rgba(0,0,0,0.2); border-bottom: 1px solid var(--python-blue); }
+        .card-title { font-size: 1.3rem; font-weight: 700; }
+        .card-number { background-color: var(--red-accent); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; box-shadow: 0 0 10px var(--red-accent); }
+        .card-body { padding: 20px; }
+        .card-body ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+        .card-body li { display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 8px; background-color: rgba(255, 255, 255, 0.05); transition: background-color 0.2s; }
+        
+        .clickable-item { cursor: pointer; }
+        .clickable-item:hover { background-color: rgba(56, 189, 248, 0.15); }
+        
+        .item-number { color: var(--primary-color); font-weight: bold; font-size: 1.1rem; min-width: 20px; text-align: center; }
+        .item-icon { font-size: 1.5rem; min-width: 30px; text-align: center; }
+        .item-text { flex-grow: 1; font-size: 1rem; }
+        .item-code { direction: ltr; font-family: monospace; background-color: var(--code-bg); color: var(--python-yellow); padding: 5px 10px; border-radius: 5px; font-size: 0.9rem; border: 1px solid #4a5568; white-space: nowrap; }
+
+        /* Modal CSS */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background-color: var(--card-bg); padding: 30px 40px; border-radius: 15px; border: 1px solid var(--primary-color); width: 90%; max-width: 900px; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close-btn { position: absolute; top: 15px; left: 20px; font-size: 2.5rem; color: #aaa; cursor: pointer; transition: color 0.2s, transform 0.2s; line-height: 1; }
+        .modal-close-btn:hover { color: white; transform: rotate(90deg); }
+
+        /* Styles for content inside modal */
+        .modal-article h3 { font-size: 1.8rem; color: var(--primary-color); margin-top: 20px; margin-bottom: 15px; border-bottom: 1px solid var(--python-blue); padding-bottom: 10px; }
+        .modal-article h3:first-child { margin-top: 0; }
+        .modal-article h4 { font-size: 1.3rem; color: var(--text-color); margin-top: 20px; margin-bottom: 10px; }
+        .modal-article p { margin-bottom: 15px; line-height: 1.7; font-size: 1.1rem; color: #d1d5db; }
+        .modal-article ul { padding-right: 25px; margin-bottom: 20px; }
+        .modal-article li { list-style-type: '• '; padding: 5px 0; font-size: 1.1rem; }
+        .modal-article code { background-color: var(--code-bg); color: #facc15; padding: 3px 6px; border-radius: 5px; font-family: monospace; font-size: 1rem; }
+        .modal-article pre { background-color: var(--code-bg); padding: 20px; border-radius: 8px; margin: 15px 0; white-space: pre-wrap; direction: ltr; text-align: left; font-size: 1rem; }
+        .modal-article table { width: 100%; border-collapse: collapse; margin: 20px 0; direction: ltr; font-size: 1rem; }
+        .modal-article th, .modal-article td { border: 1px solid #4a5568; padding: 12px 15px; text-align: left; }
+        .modal-article th { background-color: rgba(0,0,0,0.3); }
+
+        /* Study order and Responsive styles */
+        .study-order { width: 150px; flex-shrink: 0; padding: 20px; background-color: var(--card-bg); border-radius: 12px; position: sticky; top: 40px; border: 1px solid rgba(56, 189, 248, 0.2); }
+        .study-order-title { text-align: center; font-size: 1.2rem; margin-bottom: 25px; color: var(--primary-color); }
+        .study-order ol { list-style: none; position: relative; display: flex; flex-direction: column; align-items: center; gap: 25px; }
+        .study-order ol::before { content: ''; position: absolute; top: 20px; bottom: 20px; left: 50%; transform: translateX(-50%); width: 2px; background: linear-gradient(transparent, var(--primary-color), transparent); opacity: 0.5; z-index: 0; }
+        .study-order li { width: 45px; height: 45px; background-color: var(--red-accent); border: 3px solid var(--text-color); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: bold; color: white; z-index: 1; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 15px rgba(229, 62, 62, 0.7); }
+        .study-order li:hover { transform: scale(1.15); background-color: #fc8181; }
+        @media (max-width: 1200px) { .main-content { flex-direction: column-reverse; } .study-order { width: 100%; position: static; margin-bottom: 30px; } .study-order ol { flex-direction: row; justify-content: center; gap: 15px; } .study-order ol::before { width: 80%; height: 2px; top: 50%; left: 10%; transform: translateY(-50%); } }
+        @media (max-width: 768px) { body { padding: 0; } .container { padding: 20px 10px; } .main-title { font-size: 2rem; } .subtitle { font-size: 1.2rem; } .cheatsheet-grid { grid-template-columns: 1fr; } .study-order ol { flex-wrap: wrap; } .modal-content { padding: 20px; } }
+    </style>
+</head>
+<body>
+    
+    <div class="iframe-background">
+        <iframe src="https://streamable.com/e/sgez1p?autoplay=1&muted=1&loop=1" allow="autoplay; fullscreen"></iframe>
+    </div>
+    <div class="video-overlay"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title"><svg class="python-logo" viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104.258 15.018v50.932c0 20.373-16.559 36.932-36.932 36.932H15.018v36.932h52.308c45.42 0 82.25-36.83 82.25-82.25V15.018h-45.318z" fill="#3776AB"/><path d="M105.742 194.982v-50.932c0-20.373 16.559-36.932 36.932-36.932h52.308v-36.932h-52.308c-45.42 0-82.25 36.83-82.25 82.25v42.564h45.318z" fill="#FFD343"/></svg><span>کور سینتکس پایتون</span></h1>
+            <h2 class="subtitle">بدون کتابخانه 💻</h2>
+            <p class="author">Author: Ehsan Koohpayeh</p>
+        </header>
+
+        <div class="main-content">
+            <aside class="study-order">
+                <h3 class="study-order-title">ترتیب مطالعه</h3>
+                <ol><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li></ol>
+            </aside>
+
+            <main class="cheatsheet-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">متغیرها و انواع داده‌ها</h3><span class="card-number">1</span>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li class="clickable-item" data-modal-target="#numbers-modal"><span class="item-number">1</span><span class="item-icon">🔢</span><span class="item-text">اعداد</span><code class="item-code">(int, float)</code></li>
+                            <li class="clickable-item" data-modal-target="#strings-modal"><span class="item-number">2</span><span class="item-icon">🔡</span><span class="item-text">رشته‌ها</span><code class="item-code">(str)</code></li>
+                            <li><span class="item-number">3</span><span class="item-icon">✔️</span><span class="item-text">بولین‌ها</span><code class="item-code">(bool)</code></li>
+                            <li><span class="item-number">4</span><span class="item-icon">📋</span><span class="item-text">لیست‌ها</span><code class="item-code">(list)</code></li>
+                            <li><span class="item-number">5</span><span class="item-icon">🔒</span><span class="item-text">تاپل‌ها</span><code class="item-code">(tuple)</code></li>
+                            <li><span class="item-number">6</span><span class="item-icon">📖</span><span class="item-text">دیکشنری‌ها</span><code class="item-code">(dict)</code></li>
+                            <li><span class="item-number">7</span><span class="item-icon">🔵</span><span class="item-text">مجموعه‌ها</span><code class="item-code">(set)</code></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Other cards... -->
+                <div class="card"><div class="card-header"><h3 class="card-title">عملگرها</h3><span class="card-number">2</span></div><div class="card-body"><ul><li><span class="item-number">1</span><span class="item-icon">➕</span><span class="item-text">حسابی</span><code class="item-code">%, /, *, -, +</code></li><li><span class="item-number">2</span><span class="item-icon">⚖️</span><span class="item-text">مقایسه‌ای</span><code class="item-code">==, !=, >, <, >=, <=</code></li><li><span class="item-number">3</span><span class="item-icon">🧠</span><span class="item-text">منطقی</span><code class="item-code">and, or, not</code></li><li><span class="item-number">4</span><span class="item-icon">🎯</span><span class="item-text">عضویتی</span><code class="item-code">in, not in</code></li><li><span class="item-number">5</span><span class="item-icon">🆔</span><span class="item-text">هویتی</span><code class="item-code">is, is not</code></li></ul></div></div>
+                <div class="card"><div class="card-header"><h3 class="card-title">ساختارهای کنترلی</h3><span class="card-number">3</span></div><div class="card-body"><ul><li><span class="item-number">1</span><span class="item-icon">❓</span><span class="item-text">شرطی‌ها</span><code class="item-code">if, elif, else</code></li><li><span class="item-number">2</span><span class="item-icon">🔄</span><span class="item-text">حلقه‌ها</span><code class="item-code">for, while</code></li><li><span class="item-number">3</span><span class="item-icon">🛑</span><span class="item-text">توقف با</span><code class="item-code">break</code></li><li><span class="item-number">4</span><span class="item-icon">✅</span><span class="item-text">ادامه با</span><code class="item-code">continue</code></li></ul></div></div>
+                <div class="card"><div class="card-header"><h3 class="card-title">توابع</h3><span class="card-number">4</span></div><div class="card-body"><ul><li><span class="item-number">1</span><span class="item-icon">🛠️</span><span class="item-text">تعریف با</span><code class="item-code">def</code></li><li><span class="item-number">2</span><span class="item-icon">📥</span><span class="item-text">پارامترها و آرگومان‌ها</span></li><li><span class="item-number">3</span><span class="item-icon">📤</span><span class="item-text">مقادیر بازگشتی</span><code class="item-code">(return)</code></li><li><span class="item-number">4</span><span class="item-icon">⚡️</span><span class="item-text">توابع لامبدا</span><code class="item-code">lambda</code></li></ul></div></div>
+                <div class="card"><div class="card-header"><h3 class="card-title">ماژول‌ها و پکیج‌ها</h3><span class="card-number">5</span></div><div class="card-body"><ul><li><span class="item-number">1</span><span class="item-icon">📦</span><span class="item-text">وارد کردن با</span><code class="item-code">import</code></li><li><span class="item-number">2</span><span class="item-icon">🧩</span><span class="item-text">استفاده از ماژول‌ها</span></li><li><span class="item-number">3</span><span class="item-icon">🌐</span><span class="item-text">نصب پکیج‌های ثالث با</span><code class="item-code">pip</code></li></ul></div></div>
+                <div class="card"><div class="card-header"><h3 class="card-title">کار با فایل‌ها</h3><span class="card-number">6</span></div><div class="card-body"><ul><li><span class="item-number">1</span><span class="item-icon">📖</span><span class="item-text">خواندن</span></li><li><span class="item-number">2</span><span class="item-icon">✍️</span><span class="item-text">نوشتن</span></li><li><span class="item-number">3</span><span class="item-icon">🔐</span><span class="item-text">مدیریت بهتر با</span><code class="item-code">with open(...)</code></li></ul></div></div>
+                <div class="card"><div class="card-header"><h3 class="card-title">برنامه‌نویسی شیء‌گرا (OOP)</h3><span class="card-number">7</span></div><div class="card-body"><ul><li><span class="item-number">1</span><span class="item-icon">🏗️</span><span class="item-text">معرفی کلاس‌ها</span><code class="item-code">(class)</code></li><li><span class="item-number">2</span><span class="item-icon">👨‍💻</span><span class="item-text">ساخت اشیاء</span><code class="item-code">(Objects)</code></li></ul></div></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal for Numbers -->
+    <div class="modal-overlay" id="numbers-modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">×</span>
+            <article class="modal-article">
+                <h3>۱. متغیر چیست؟</h3>
+                <p>متغیر فضایی در حافظه است که می‌تواند مقداری را در خود نگه دارد. در پایتون نیازی به اعلام نوع متغیر پیش از استفاده نیست:</p>
+                <pre><code>x = 10         # یک متغیر با نام x و مقدار عدد صحیح ۱۰
+price = 3.14   # یک متغیر با نام price و مقدار اعشاری</code></pre>
+                <ul>
+                    <li>پایتون پویاست: نوع متغیر در زمان اجرا تعیین می‌شود.</li>
+                    <li>نام متغیر باید با حرف یا آندر‌لاین (<code>_</code>) شروع شود و می‌تواند شامل حروف، اعداد و آندرلاین باشد.</li>
+                    <li>از کلمات کلیدی پایتون (مثل <code>for</code>، <code>if</code>، <code>def</code> و…) نمی‌توان به‌عنوان نام متغیر استفاده کرد.</li>
+                </ul>
+
+                <h3>۲. نوع داده int (اعداد صحیح)</h3>
+                <p>نمایانگر اعداد بدون قسمت اعشاری است. می‌تواند مثبت، منفی یا صفر باشد و در پایتون محدودیتی برای طول عدد وجود ندارد.</p>
+                <pre><code>a = 5
+b = -20
+c = 0</code></pre>
+                <h4>عملیات روی int</h4>
+                <table>
+                    <thead><tr><th>عملیات</th><th>مثال</th><th>نتیجه</th></tr></thead>
+                    <tbody>
+                        <tr><td>جمع</td><td><code>3 + 7</code></td><td>10</td></tr>
+                        <tr><td>تفریق</td><td><code>10 - 4</code></td><td>6</td></tr>
+                        <tr><td>ضرب</td><td><code>6 * 7</code></td><td>42</td></tr>
+                        <tr><td>تقسیم صحیح</td><td><code>13 // 5</code></td><td>2</td></tr>
+                        <tr><td>باقیمانده</td><td><code>13 % 5</code></td><td>3</td></tr>
+                        <tr><td>توان</td><td><code>2 ** 3</code></td><td>8</td></tr>
+                    </tbody>
+                </table>
+                
+                <h3>۳. نوع داده float (اعداد اعشاری)</h3>
+                <p>برای اعداد اعشاری (دارای قسمت کسری) به‌کار می‌رود. تقسیم ساده (<code>/</code>) همیشه خروجی <code>float</code> می‌دهد.</p>
+                <pre><code>pi = 3.14159
+temperature = -5.5
+print(7.0 / 2)     # 3.5
+print(4 / 2)       # خروجی: 2.0</code></pre>
+
+                <h3>۴. تبدیل نوع داده (Type Conversion)</h3>
+                <p>گاهی لازم است <code>int</code> را به <code>float</code> یا بالعکس تبدیل کنیم:</p>
+                <pre><code>x = 10        # int
+y = float(x)  # تبدیل به float → 10.0
+
+z = 3.99      # float
+w = int(z)    # تبدیل به int → 3 (بخش اعشاری حذف می‌شود)</code></pre>
+                
+                <h3>۵. نکات مهم و بهترین شیوه‌ها</h3>
+                <ul>
+                    <li><b>نام‌گذاری خوانا:</b> از نام‌های معنادار و <code>snake_case</code> استفاده کنید (مانند <code>total_price</code>).</li>
+                    <li><b>کامنت‌گذاری:</b> برای توضیح کدهای مهم از <code>#</code> استفاده کنید.</li>
+                    <li><b>خوانایی کد:</b> در اطراف عملگرها فاصله بگذارید: <code>result = a + b</code>.</li>
+                    <li><b>اجتناب از بازتعریف:</b> نام‌های داخلی مثل <code>int</code> یا <code>list</code> را بازنویسی نکنید.</li>
+                </ul>
+
+                <h3>۶. مثال جامع</h3>
+                <p>برنامه محاسبه مساحت و محیط دایره:</p>
+                <pre><code># ثابت عدد پی
+PI = 3.14159
+
+# دریافت ورودی از کاربر
+radius_input = input("شعاع دایره را وارد کنید: ")
+radius = float(radius_input) # تبدیل رشته به عدد اعشاری
+
+# محاسبه مساحت و محیط
+area = PI * radius ** 2
+circumference = 2 * PI * radius
+
+# نمایش نتیجه
+print("مساحت دایره:", area)
+print("محیط دایره:", circumference)</code></pre>
+            </article>
+        </div>
+    </div>
+
+    <!-- Modal for Strings -->
+    <div class="modal-overlay" id="strings-modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">×</span>
+            <article class="modal-article">
+                <h3>۱. رشته چیست؟</h3>
+                <p>رشته (str) مجموعه‌ای از کاراکترهاست که داخل کوتیشن‌های تکی (<code>'...'</code>) یا دوتایی (<code>"..."</code>) قرار می‌گیرد:</p>
+                <pre><code>name = "Ali"       
+greeting = 'سلام'</code></pre>
+                <ul>
+                    <li>رشته می‌تواند شامل حروف، اعداد، سمبل‌ها و فضا باشد.</li>
+                    <li>برای رشته‌های چندخطی از سه کوتیشن استفاده می‌کنیم:</li>
+                </ul>
+                <pre><code>text = """این یک
+رشته‌ی
+چندخطی است."""</code></pre>
+
+                <h3>۲. دسترسی به کاراکترها و طول رشته</h3>
+                <p>ایندکس‌گذاری از صفر شروع می‌شود. طول رشته با تابع <code>len()</code> به‌دست می‌آید:</p>
+                <pre><code>s = "Python"
+print(s[0])   # P
+print(len(s)) # 6</code></pre>
+
+                <h3>۳. برش (Slicing)</h3>
+                <p>می‌توانیم بازه‌ای از کاراکترها را استخراج کنیم (<code>[start:stop]</code>):</p>
+                <pre><code>s = "Programming"
+print(s[0:6])    # "Progra" (از ایندکس ۰ تا ۵)
+print(s[3:])     # "gramming" (از ایندکس ۳ تا انتها)
+print(s[-3:])    # "ing" (سه کاراکتر آخر)</code></pre>
+
+                <h3>۴. الحاق و تکرار رشته</h3>
+                <p>با عملگرهای <code>+</code> برای الحاق و <code>*</code> برای تکرار:</p>
+                <pre><code>print("Hello" + " " + "World")  # "Hello World"
+print("ha" * 3)                 # "hahaha"</code></pre>
+
+                <h3>۵. متدهای رایج str</h3>
+                <table>
+                    <thead><tr><th>متد</th><th>توضیح</th><th>مثال</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>upper()</code></td><td>تبدیل همه حروف به حروف بزرگ</td><td><code>"hi".upper() → "HI"</code></td></tr>
+                        <tr><td><code>lower()</code></td><td>تبدیل همه حروف به حروف کوچک</td><td><code>"HI".lower() → "hi"</code></td></tr>
+                        <tr><td><code>strip()</code></td><td>حذف فاصله‌های ابتدا و انتهای رشته</td><td><code>" text ".strip() → "text"</code></td></tr>
+                        <tr><td><code>split(sep)</code></td><td>تقسیم به لیست بر اساس جداکننده</td><td><code>"a,b,c".split(",") → ["a","b","c"]</code></td></tr>
+                        <tr><td><code>join(iter)</code></td><td>الحاق اعضای iterable با رشته</td><td><code>"-".join(["a","b","c"]) → "a-b-c"</code></td></tr>
+                        <tr><td><code>replace(old, new)</code></td><td>جایگزینی زیررشته‌ی old با new</td><td><code>"2020".replace("0","1") → "2121"</code></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>۶. قالب‌بندی رشته‌ها (Formatting)</h3>
+                <h4>۱. با f-string (روش مدرن و پیشنهادی):</h4>
+                <pre><code>name = "Sara"
+age = 30
+print(f"Name: {name}, Age: {age}")
+# خروجی: Name: Sara, Age: 30</code></pre>
+                <h4>۲. با متد <code>.format()</code>:</h4>
+                <pre><code>print("Name: {}, Age: {}".format(name, age))
+# خروجی: Name: Sara, Age: 30</code></pre>
+
+                <h3>۷. نکات مهم و بهترین شیوه‌ها</h3>
+                <ul>
+                    <li><b>خوانایی:</b> برای نمایش متغیرها در خروجی همیشه از f-string استفاده کنید.</li>
+                    <li><b>رشته خام (Raw String):</b> برای جلوگیری از تفسیر کاراکترهای ویژه (مثل <code>\n</code>)، قبل از رشته <code>r</code> بگذارید: <code>path = r"C:\new_folder"</code></li>
+                    <li><b>رشته‌های طولانی:</b> برای شکستن خطوط طولانی از پرانتز استفاده کنید.</li>
+                </ul>
+
+                <h3>۸. مثال جامع</h3>
+                <p>برنامه‌ای که از کاربر یک جمله می‌گیرد و تعداد کلمات آن را می‌شمارد، همه حروف را بزرگ می‌کند و حروف 'a' را با '@' جایگزین می‌کند:</p>
+                <pre><code>sentence = input("یک جمله وارد کنید: ")
+
+# شمارش کلمات
+words = sentence.split()
+count = len(words)
+
+# تبدیل به حروف بزرگ
+upper_sentence = sentence.upper()
+
+# جایگزینی
+modified = sentence.replace("a", "@").replace("A", "@")
+
+print(f"تعداد کلمات: {count}")
+print(f"حروف بزرگ: {upper_sentence}")
+print(f"متن ویرایش‌شده: {modified}")</code></pre>
+            </article>
+        </div>
+    </div>
+    
+    <!-- Modal JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalTriggers = document.querySelectorAll('[data-modal-target]');
+            
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const modalId = trigger.getAttribute('data-modal-target');
+                    const modal = document.querySelector(modalId);
+                    if (modal) {
+                        openModal(modal);
+                    }
+                });
+            });
+
+            function openModal(modal) {
+                if (!modal) return;
+                modal.classList.add('active');
+                document.body.classList.add('modal-open');
+
+                const overlay = modal;
+                const closeBtn = modal.querySelector('.modal-close-btn');
+                
+                const closeModal = () => {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('modal-open');
+                    // Clean up event listeners to prevent memory leaks
+                    closeBtn.removeEventListener('click', closeModalHandler);
+                    overlay.removeEventListener('click', overlayClickHandler);
+                };
+                
+                const closeModalHandler = () => closeModal();
+                const overlayClickHandler = (e) => {
+                    if (e.target === overlay) {
+                        closeModal();
+                    }
+                };
+
+                closeBtn.addEventListener('click', closeModalHandler);
+                overlay.addEventListener('click', overlayClickHandler);
+            }
+        });
+    </script>
+</body>
+</html>
