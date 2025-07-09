@@ -124,7 +124,7 @@
                             <li class="clickable-item" data-modal-target="#numbers-modal"><span class="item-number">1</span><span class="item-icon">🔢</span><span class="item-text">اعداد</span><code class="item-code">(int, float)</code></li>
                             <li class="clickable-item" data-modal-target="#strings-modal"><span class="item-number">2</span><span class="item-icon">🔡</span><span class="item-text">رشته‌ها</span><code class="item-code">(str)</code></li>
                             <li class="clickable-item" data-modal-target="#booleans-modal"><span class="item-number">3</span><span class="item-icon">✔️</span><span class="item-text">بولین‌ها</span><code class="item-code">(bool)</code></li>
-                            <li><span class="item-number">4</span><span class="item-icon">📋</span><span class="item-text">لیست‌ها</span><code class="item-code">(list)</code></li>
+                            <li class="clickable-item" data-modal-target="#lists-modal"><span class="item-number">4</span><span class="item-icon">📋</span><span class="item-text">لیست‌ها</span><code class="item-code">(list)</code></li>
                             <li><span class="item-number">5</span><span class="item-icon">🔒</span><span class="item-text">تاپل‌ها</span><code class="item-code">(tuple)</code></li>
                             <li><span class="item-number">6</span><span class="item-icon">📖</span><span class="item-text">دیکشنری‌ها</span><code class="item-code">(dict)</code></li>
                             <li><span class="item-number">7</span><span class="item-icon">🔵</span><span class="item-text">مجموعه‌ها</span><code class="item-code">(set)</code></li>
@@ -405,6 +405,106 @@ if age >= 18 and has_id.lower() == "yes":
     print("می‌توانید گواهینامه بگیرید.")
 else:
     print("شرایط لازم را ندارید.")</code></pre>
+            </article>
+        </div>
+    </div>
+
+    <!-- Modal for Lists -->
+    <div class="modal-overlay" id="lists-modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">×</span>
+            <article class="modal-article">
+                <h3>۱. لیست (List) چیست؟</h3>
+                <p>لیست یک مجموعه‌ی قابل تغییر (mutable) از مقادیر است که با براکت (<code>[]</code>) تعریف می‌شود:</p>
+                <pre><code>fruits = ["apple", "banana", "orange"]
+numbers = [1, 2, 3, 4, 5]
+mixed = ["ali", 25, True, 3.14]</code></pre>
+                <ul>
+                    <li>لیست می‌تواند انواع داده مختلف را در خود نگه دارد.</li>
+                    <li>هر عنصر با <code>,</code> از دیگری جدا می‌شود.</li>
+                </ul>
+
+                <h3>۲. دسترسی به عناصر لیست</h3>
+                <p>با استفاده از ایندکس‌ها می‌توان به عناصر دسترسی داشت:</p>
+                <pre><code>fruits = ["apple", "banana", "cherry"]
+print(fruits[0])    # apple
+print(fruits[2])    # cherry
+print(fruits[-1])   # cherry (آخرین عنصر)</code></pre>
+                <p>اگر به ایندکسی که وجود ندارد دسترسی پیدا کنید، خطای <code>IndexError</code> دریافت می‌کنید.</p>
+
+                <h3>۳. تغییر، افزودن و حذف عناصر</h3>
+                <h4>تغییر مقدار:</h4>
+                <pre><code>fruits[1] = "mango"
+print(fruits)  # ["apple", "mango", "cherry"]</code></pre>
+                <h4>افزودن:</h4>
+                <pre><code>fruits.append("grape")        # افزودن به انتها
+fruits.insert(1, "kiwi")      # افزودن در ایندکس خاص</code></pre>
+                <h4>حذف:</h4>
+                <pre><code>fruits.remove("apple")        # حذف با مقدار
+del fruits[0]                 # حذف با ایندکس
+popped_item = fruits.pop()    # حذف آخرین و بازگرداندن آن</code></pre>
+
+                <h3>۴. متدهای رایج لیست</h3>
+                <table>
+                    <thead><tr><th>متد</th><th>کاربرد</th><th>مثال</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>append(x)</code></td><td>افزودن عنصر به انتهای لیست</td><td><code>lst.append(10)</code></td></tr>
+                        <tr><td><code>insert(i, x)</code></td><td>درج عنصر x در ایندکس i</td><td><code>lst.insert(1, "ali")</code></td></tr>
+                        <tr><td><code>remove(x)</code></td><td>حذف اولین وقوع عنصر x از لیست</td><td><code>lst.remove("apple")</code></td></tr>
+                        <tr><td><code>pop([i])</code></td><td>حذف و بازگرداندن عنصر در ایندکس i</td><td><code>lst.pop(0)</code></td></tr>
+                        <tr><td><code>sort()</code></td><td>مرتب‌سازی لیست</td><td><code>lst.sort()</code></td></tr>
+                        <tr><td><code>reverse()</code></td><td>معکوس کردن ترتیب لیست</td><td><code>lst.reverse()</code></td></tr>
+                        <tr><td><code>count(x)</code></td><td>تعداد تکرار عنصر x</td><td><code>lst.count(5)</code></td></tr>
+                        <tr><td><code>index(x)</code></td><td>یافتن اولین ایندکس عنصر x</td><td><code>lst.index("apple")</code></td></tr>
+                        <tr><td><code>clear()</code></td><td>خالی کردن لیست</td><td><code>lst.clear()</code></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>۵. پیمایش لیست (Loop through a list)</h3>
+                <h4>با <code>for</code>:</h4>
+                <pre><code>for fruit in fruits:
+    print(fruit)</code></pre>
+                <h4>با ایندکس:</h4>
+                <pre><code>for i in range(len(fruits)):
+    print(i, fruits[i])</code></pre>
+
+                <h3>۶. بررسی وجود یک مقدار در لیست</h3>
+                <pre><code>if "banana" in fruits:
+    print("موجود است")
+else:
+    print("موجود نیست")</code></pre>
+
+                <h3>۷. لیست‌های تو در تو (Nested Lists)</h3>
+                <p>لیست می‌تواند شامل لیست دیگر باشد:</p>
+                <pre><code>matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+print(matrix[1][2])   # 6</code></pre>
+
+                <h3>۸. کپی‌کردن لیست</h3>
+                <p>برای جلوگیری از تغییر ناخواسته:</p>
+                <pre><code>copy1 = original_list.copy()
+copy2 = original_list[:]      # روش دیگر</code></pre>
+                <p>استفاده از <code>=</code> فقط یک ارجاع می‌سازد، نه یک کپی واقعی!</p>
+
+                <h3>۹. مثال جامع</h3>
+                <p>برنامه‌ای که لیستی از نمرات دانش‌آموزان را گرفته، میانگین آن را محاسبه و وضعیت قبولی را چاپ کند:</p>
+                <pre><code>grades = []
+
+count = int(input("تعداد نمرات را وارد کنید: "))
+for i in range(count):
+    g = float(input(f"نمره {i+1}: "))
+    grades.append(g)
+
+average = sum(grades) / len(grades)
+print(f"میانگین نمرات: {average}")
+
+if average >= 10:
+    print("وضعیت: قبول ✅")
+else:
+    print("وضعیت: مردود ❌")</code></pre>
             </article>
         </div>
     </div>
