@@ -125,7 +125,7 @@
                             <li class="clickable-item" data-modal-target="#strings-modal"><span class="item-number">2</span><span class="item-icon">🔡</span><span class="item-text">رشته‌ها</span><code class="item-code">(str)</code></li>
                             <li class="clickable-item" data-modal-target="#booleans-modal"><span class="item-number">3</span><span class="item-icon">✔️</span><span class="item-text">بولین‌ها</span><code class="item-code">(bool)</code></li>
                             <li class="clickable-item" data-modal-target="#lists-modal"><span class="item-number">4</span><span class="item-icon">📋</span><span class="item-text">لیست‌ها</span><code class="item-code">(list)</code></li>
-                            <li><span class="item-number">5</span><span class="item-icon">🔒</span><span class="item-text">تاپل‌ها</span><code class="item-code">(tuple)</code></li>
+                            <li class="clickable-item" data-modal-target="#tuples-modal"><span class="item-number">5</span><span class="item-icon">🔒</span><span class="item-text">تاپل‌ها</span><code class="item-code">(tuple)</code></li>
                             <li><span class="item-number">6</span><span class="item-icon">📖</span><span class="item-text">دیکشنری‌ها</span><code class="item-code">(dict)</code></li>
                             <li><span class="item-number">7</span><span class="item-icon">🔵</span><span class="item-text">مجموعه‌ها</span><code class="item-code">(set)</code></li>
                         </ul>
@@ -505,6 +505,102 @@ if average >= 10:
     print("وضعیت: قبول ✅")
 else:
     print("وضعیت: مردود ❌")</code></pre>
+            </article>
+        </div>
+    </div>
+
+    <!-- Modal for Tuples -->
+    <div class="modal-overlay" id="tuples-modal">
+        <div class="modal-content">
+            <span class="modal-close-btn">×</span>
+            <article class="modal-article">
+                <h3>۱. تاپل (Tuple) چیست؟</h3>
+                <p>تاپل یک مجموعه ترتیب‌دار (ordered) و تغییرناپذیر (immutable) است که با پرانتز <code>()</code> تعریف می‌شود:</p>
+                <pre><code>coordinates = (4, 5)
+colors = ("red", "green", "blue")</code></pre>
+                <ul>
+                    <li>تاپل می‌تواند شامل هر نوع داده‌ای باشد.</li>
+                    <li>پس از ایجاد، نمی‌توان عناصر آن را تغییر داد.</li>
+                </ul>
+
+                <h3>۲. تفاوت لیست و تاپل</h3>
+                <table>
+                    <thead><tr><th>ویژگی</th><th>لیست (list)</th><th>تاپل (tuple)</th></tr></thead>
+                    <tbody>
+                        <tr><td>قابل تغییر</td><td>✅ بله</td><td>❌ خیر</td></tr>
+                        <tr><td>سینتکس</td><td><code>[]</code></td><td><code>()</code></td></tr>
+                        <tr><td>عملکرد</td><td>کندتر (در مقایسه)</td><td>سریع‌تر و سبک‌تر</td></tr>
+                        <tr><td>استفاده رایج</td><td>داده‌های پویا</td><td>داده‌های ثابت</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>۳. ایجاد تاپل</h3>
+                <pre><code>t1 = (1, 2, 3)
+t2 = ("a", True, 3.14)</code></pre>
+                <h4>تاپل یک‌عضوی:</h4>
+                <p>باید بعد از مقدار، کاما بگذارید:</p>
+                <pre><code>single = (5,)     # تاپل با یک مقدار
+not_a_tuple = (5) # فقط عدد ۵</code></pre>
+
+                <h3>۴. دسترسی به عناصر</h3>
+                <p>مانند لیست‌ها با ایندکس:</p>
+                <pre><code>t = ("python", 2024, True)
+print(t[0])   # "python"
+print(t[-1])  # True</code></pre>
+
+                <h3>۵. پیمایش تاپل</h3>
+                <pre><code>for item in t:
+    print(item)</code></pre>
+
+                <h3>۶. توابع و عملیات رایج</h3>
+                <table>
+                    <thead><tr><th>تابع / عملیات</th><th>توضیح</th><th>مثال</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>len()</code></td><td>طول تاپل</td><td><code>len(t)</code></td></tr>
+                        <tr><td><code>count(x)</code></td><td>تعداد تکرار مقدار x در تاپل</td><td><code>t.count(3)</code></td></tr>
+                        <tr><td><code>index(x)</code></td><td>اولین ایندکس مقدار x</td><td><code>t.index("python")</code></td></tr>
+                        <tr><td><code>in</code></td><td>بررسی وجود مقدار در تاپل</td><td><code>"a" in t</code></td></tr>
+                        <tr><td><code>+</code></td><td>الحاق دو تاپل</td><td><code>t1 + t2</code></td></tr>
+                        <tr><td><code>*</code></td><td>تکرار تاپل</td><td><code>t * 2</code></td></tr>
+                    </tbody>
+                </table>
+
+                <h3>۷. تبدیل لیست به تاپل و برعکس</h3>
+                <h4># لیست به تاپل</h4>
+                <pre><code>lst = [1, 2, 3]
+tpl = tuple(lst)</code></pre>
+                <h4># تاپل به لیست</h4>
+                <pre><code>new_lst = list(tpl)</code></pre>
+
+                <h3>۸. کاربردهای تاپل</h3>
+                <ul>
+                    <li>برای داده‌هایی که قرار نیست تغییر کنند</li>
+                    <li>برگشتی توابع:
+                        <pre><code>def get_position():
+    return (100, 200)
+x, y = get_position()</code></pre>
+                    </li>
+                    <li>به‌عنوان کلید در دیکشنری‌ها (چون قابل هش شدن است):
+                        <pre><code>my_dict = {("Ali", "Reza"): 90}</code></pre>
+                    </li>
+                </ul>
+
+                <h3>۹. تاپل‌های تو در تو</h3>
+                <pre><code>person = ("Ali", 25, ("Iran", "Tehran"))
+print(person[2][1])  # "Tehran"</code></pre>
+
+                <h3>۱۰. مثال جامع</h3>
+                <p>برنامه‌ای که اطلاعات کاربر را به صورت تاپل ذخیره کرده و نمایش می‌دهد:</p>
+                <pre><code>name = input("نام: ")
+age = int(input("سن: "))
+city = input("شهر: ")
+
+user_info = (name, age, city)
+
+print("\nاطلاعات شما:")
+print(f"نام: {user_info[0]}")
+print(f"سن: {user_info[1]}")
+print(f"شهر: {user_info[2]}")</code></pre>
             </article>
         </div>
     </div>
