@@ -20,7 +20,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Vazirmatn', sans-serif; color: var(--text-color);
             min-height: 100vh;
@@ -35,7 +35,7 @@
         .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--overlay-color); backdrop-filter: blur(3px); z-index: -1; }
 
         .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
-        
+
         header { text-align: center; margin-bottom: 40px; }
         .main-title { font-size: 3rem; font-weight: 700; color: var(--text-color); display: flex; align-items: center; justify-content: center; gap: 20px; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
         .main-title .python-logo { width: 60px; height: 60px; }
@@ -53,10 +53,10 @@
         .card-body { padding: 20px; }
         .card-body ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
         .card-body li { display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 8px; background-color: rgba(255, 255, 255, 0.05); transition: background-color 0.2s; }
-        
+
         .clickable-item { cursor: pointer; }
         .clickable-item:hover { background-color: rgba(56, 189, 248, 0.15); }
-        
+
         .item-number { color: var(--primary-color); font-weight: bold; font-size: 1.1rem; min-width: 20px; text-align: center; }
         .item-icon { font-size: 1.5rem; min-width: 30px; text-align: center; }
         .item-text { flex-grow: 1; font-size: 1rem; }
@@ -95,9 +95,9 @@
     </style>
 </head>
 <body>
-    
+
     <div class="iframe-background">
-        <iframe src="https://streamable.com/e/8jwlmq?autoplay=1&muted=1&loop=1" allow="autoplay; fullscreen"></iframe>
+        <iframe src="https://streamable.com/e/sgez1p?autoplay=1&muted=1&loop=1" allow="autoplay; fullscreen"></iframe>
     </div>
     <div class="video-overlay"></div>
 
@@ -105,7 +105,7 @@
         <header>
             <h1 class="main-title"><svg class="python-logo" viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M104.258 15.018v50.932c0 20.373-16.559 36.932-36.932 36.932H15.018v36.932h52.308c45.42 0 82.25-36.83 82.25-82.25V15.018h-45.318z" fill="#3776AB"/><path d="M105.742 194.982v-50.932c0-20.373 16.559-36.932 36.932-36.932h52.308v-36.932h-52.308c-45.42 0-82.25 36.83-82.25 82.25v42.564h45.318z" fill="#FFD343"/></svg><span>کور سینتکس پایتون</span></h1>
             <h2 class="subtitle">بدون کتابخانه 💻</h2>
-            <p class="author"><h3> Author: Ehsan Koohpayeh </h3> </p>
+            <p class="author">Author: Ehsan Koohpayeh</p>
         </header>
 
         <div class="main-content">
@@ -117,7 +117,7 @@
             <main class="cheatsheet-grid">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#variables-datatypes-overview-modal">متغیرها و انواع داده‌ها(کلیک کنید)</h3><span class="card-number">1</span>
+                        <h3 class="card-title clickable-item" data-modal-target="#variables-datatypes-overview-modal">متغیرها و انواع داده‌ها</h3><span class="card-number">1</span>
                     </div>
                     <div class="card-body">
                         <ul>
@@ -174,7 +174,7 @@ c = 0</code></pre>
                         <tr><td>توان</td><td><code>2 ** 3</code></td><td>8</td></tr>
                     </tbody>
                 </table>
-                
+
                 <h3>۳. نوع داده float (اعداد اعشاری)</h3>
                 <p>برای اعداد اعشاری (دارای قسمت کسری) به‌کار می‌رود. تقسیم ساده (<code>/</code>) همیشه خروجی <code>float</code> می‌دهد.</p>
                 <pre><code>pi = 3.14159
@@ -189,7 +189,7 @@ y = float(x)  # تبدیل به float → 10.0
 
 z = 3.99      # float
 w = int(z)    # تبدیل به int → 3 (بخش اعشاری حذف می‌شود)</code></pre>
-                
+
                 <h3>۵. نکات مهم و بهترین شیوه‌ها</h3>
                 <ul>
                     <li><b>نام‌گذاری خوانا:</b> از نام‌های معنادار و <code>snake_case</code> استفاده کنید (مانند <code>total_price</code>).</li>
@@ -225,7 +225,7 @@ print("محیط دایره:", circumference)</code></pre>
             <article class="modal-article">
                 <h3>۱. رشته چیست؟</h3>
                 <p>رشته (str) مجموعه‌ای از کاراکترهاست که داخل کوتیشن‌های تکی (<code>'...'</code>) یا دوتایی (<code>"..."</code>) قرار می‌گیرد:</p>
-                <pre><code>name = "Ali"       
+                <pre><code>name = "Ali"
 greeting = 'سلام'</code></pre>
                 <ul>
                     <li>رشته می‌تواند شامل حروف، اعداد، سمبل‌ها و فضا باشد.</li>
@@ -810,12 +810,12 @@ for n in unique_nums:
             </article>
         </div>
     </div>
-    
+
     <!-- Modal JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const modalTriggers = document.querySelectorAll('[data-modal-target]');
-            
+
             modalTriggers.forEach(trigger => {
                 trigger.addEventListener('click', () => {
                     const modalId = trigger.getAttribute('data-modal-target');
@@ -833,7 +833,7 @@ for n in unique_nums:
 
                 const overlay = modal;
                 const closeBtn = modal.querySelector('.modal-close-btn');
-                
+
                 const closeModal = () => {
                     modal.classList.remove('active');
                     document.body.classList.remove('modal-open');
@@ -841,7 +841,7 @@ for n in unique_nums:
                     closeBtn.removeEventListener('click', closeModalHandler);
                     overlay.removeEventListener('click', overlayClickHandler);
                 };
-                
+
                 const closeModalHandler = () => closeModal();
                 const overlayClickHandler = (e) => {
                     if (e.target === overlay) {
