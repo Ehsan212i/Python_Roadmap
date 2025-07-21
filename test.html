@@ -58,100 +58,44 @@
 </head>
 <body>
     <div class="container mx-auto p-4">
-        <center><h1 class="text-3xl font-bold text-center mb-6">پروژه احسان کوهپایه</h1></center>
-
-        <!-- سیستم امتیازدهی XP -->
-        <div class="xp-system" id="xp-system">
-            <div class="level-badge">
-                <span>🏆</span>
-                <span id="user-level">سطح 1</span>
-            </div>
-            <div class="xp-info">
-                <span id="xp-text">0 / 100 XP</span>
-            </div>
-            <div class="xp-bar">
-                <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
-            </div>
-        </div>
-
-        <!-- Navigation overlay برای موبایل -->
-        <div class="nav-overlay" id="nav-overlay"></div>
         
-        <!-- Mobile navigation drawer -->
-        <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-            <h3>منوی ناوبری</h3>
-            <ul>
-                <li><a href="#card-1">متغیرها و انواع داده</a></li>
-                <li><a href="#card-2">عملگرها</a></li>
-                <li><a href="#card-3">ساختارهای کنترلی</a></li>
-                <li><a href="#card-4">توابع</a></li>
-                <li><a href="#card-5">ماژول‌ها</a></li>
-                <li><a href="#card-6">کار با فایل</a></li>
-                <li><a href="#card-7">OOP</a></li>
-            </ul>
-        </div>
-
-        <!-- Achievement popup -->
-        <div class="achievement-popup" id="achievement-popup">
-            <div class="achievement-icon" id="achievement-icon">🏆</div>
-            <h3 id="achievement-title">تبریک!</h3>
-            <p id="achievement-text">شما یک دستاورد جدید کسب کردید!</p>
-            <button onclick="closeAchievementPopup()">عالی!</button>
-        </div>
-
         <header>
-            <div class="header-top">
-                <nav class="main-nav">
-                    <div class="nav-left">
-                        <button class="hamburger-menu" id="hamburger-menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-                        <div class="search-container">
-                            <input type="text" id="search-input" placeholder="جستجو در محتوا..." class="search-input">
-                            <button class="search-btn" id="search-btn">🔍</button>
-                        </div>
+            <nav class="main-nav">
+                <div class="nav-left">
+                    <a href="#" class="logo">
+                        <img src="https://uploadkon.ir/uploads/6e8e13_25logo.svg" alt="Python Logo" class="logo-img">
+                        <span class="logo-text">کور سینتکس پایتون</span>
+                    </a>
+                    <div class="search-container">
+                        <input type="text" id="search-input" placeholder="جستجو..." class="search-input">
+                        <button class="search-btn" id="search-btn">🔍</button>
                     </div>
-                    <div class="nav-right">
-                        <div class="font-size-controller">
-                            <button id="font-decrease" class="tooltip" data-tooltip="کاهش اندازه فونت">A-</button>
-                            <button id="font-increase" class="tooltip" data-tooltip="افزایش اندازه فونت">A+</button>
-                        </div>
-                        <button class="theme-toggle tooltip" id="theme-toggle" data-tooltip="تغییر تم روشن/تاریک">
-                            <span class="theme-icon">🌙</span>
-                        </button>
-                        <button class="install-btn tooltip" id="install-btn" style="display: none;" data-tooltip="نصب اپلیکیشن روی دستگاه">
-                            <span class="install-icon">📱</span>
-                            <span class="install-text">نصب</span>
-                        </button>
-                    </div>
-                </nav>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                    <div class="progress-text" id="progress-text">پیشرفت: 0%</div>
                 </div>
-            </div>
-            <h1 class="main-title">
-            <img class="python-logo" src="https://uploadkon.ir/uploads/6e8e13_25logo.svg" alt="Python Logo"/>
-            <span>کور سینتکس پایتون</span>
-        </h1>
-            <h2 class="subtitle">بدون کتابخانه 💻</h2>
-            <div class="author"><span>Author:</span> Ehsan Koohpayeh👨‍💻</div>
-            
-            <!-- Breadcrumb Navigation -->
-            <div class="breadcrumb" id="breadcrumb">
-                <span class="breadcrumb-item active">صفحه اصلی</span>
-            </div>
+                <div class="nav-right">
+                    <div class="font-size-controller">
+                        <button id="font-decrease" class="tooltip" data-tooltip="کاهش فونت">A-</button>
+                        <button id="font-increase" class="tooltip" data-tooltip="افزایش فونت">A+</button>
+                    </div>
+                    <button class="theme-toggle tooltip" id="theme-toggle" data-tooltip="تغییر تم">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="install-btn tooltip" id="install-btn" style="display: none;" data-tooltip="نصب اپلیکیشن">
+                        <span class="install-icon">📱</span>
+                    </button>
+                    <button class="hamburger-menu" id="hamburger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
         </header>
 
         <div class="main-content">
             <aside class="study-order">
-                <h3 class="study-order-title">ترتیب مطالعه</h3>
+                <h3 class="study-order-title">مسیر یادگیری</h3>
                 <ol>
-                    <li data-target="#card-1">1</li>
+                    <li data-target="#card-1" class="active">1</li>
                     <li data-target="#card-2">2</li>
                     <li data-target="#card-3">3</li>
                     <li data-target="#card-4">4</li>
@@ -159,21 +103,9 @@
                     <li data-target="#card-6">6</li>
                     <li data-target="#card-7">7</li>
                 </ol>
-                
-                <!-- Mind Map Toggle Button -->
-                <div class="mindmap-toggle">
-                    <button id="mindmap-btn" class="mindmap-button">
-                        <span class="mindmap-icon">🧠</span>
-                        <span class="mindmap-text">نقشه ذهنی</span>
-                    </button>
-                </div>
-                
-                <!-- Python Compiler Shortcut Button -->
-                <div class="compiler-toggle">
-                    <button id="compiler-btn" class="compiler-button">
-                        <span class="compiler-icon">💻</span>
-                        <span class="compiler-text">کامپایلر پایتون</span>
-                    </button>
+                <div class="aside-buttons">
+                    <button id="mindmap-btn" class="aside-btn">نقشه ذهنی</button>
+                    <button id="compiler-btn" class="aside-btn">کامپایلر آنلاین</button>
                 </div>
             </aside>
 
@@ -314,743 +246,150 @@
             </div>
 
             <main class="cheatsheet-grid">
+                <div class="topic-overview">
+                    <div class="topic-header">
+                        <h1>کور سینتکس پایتون</h1>
+                        <p>راهنمای جامع و کاربردی سینتکس پایتون، بدون نیاز به کتابخانه</p>
+                    </div>
+                    <div class="topic-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill" style="width: 25%;"></div>
+                        </div>
+                        <span class="progress-text" id="progress-text">25/100 XP</span>
+                    </div>
+                </div>
+
                 <div class="card" id="card-1" data-card-progress="0">
                     <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#variables-datatypes-overview-modal">متغیرها و انواع داده‌ها(کلیک کنید)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-1" style="display: none;">🏆</div>
-                            <span class="card-number">1</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-1"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-1">0/10 تکمیل شده</span>
+                        <div class="card-icon">🔢</div>
+                        <h3 class="card-title">متغیرها و انواع داده</h3>
+                        <div class="card-progress-text">0/8</div>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li class="clickable-item tooltip" data-modal-target="#input-output-modal" data-tooltip="یادگیری نحوه دریافت ورودی از کاربر و نمایش خروجی">
-                                <input type="checkbox" class="progress-checkbox" data-item="input-output">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">⌨️</span><span class="item-text">ورودی و خروجی</span></div><code class="item-code">print(), input()</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#numbers-modal" data-tooltip="کار با اعداد صحیح و اعشاری در پایتون">
-                                <input type="checkbox" class="progress-checkbox" data-item="numbers">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">🔢</span><span class="item-text">اعداد</span></div><code class="item-code">(int, float)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#strings-modal" data-tooltip="مدیریت و دستکاری رشته‌های متنی">
-                                <input type="checkbox" class="progress-checkbox" data-item="strings">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">🔡</span><span class="item-text">رشته‌ها</span></div><code class="item-code">(str)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#booleans-modal" data-tooltip="مقادیر True و False و منطق بولین">
-                                <input type="checkbox" class="progress-checkbox" data-item="booleans">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">✔️</span><span class="item-text">بولین‌ها</span></div><code class="item-code">(bool)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#lists-modal" data-tooltip="ساخت و مدیریت فهرست‌های قابل تغییر">
-                                <input type="checkbox" class="progress-checkbox" data-item="lists">
-                                <div class="item-info"><span class="item-number">5</span><span class="item-icon">📋</span><span class="item-text">لیست‌ها</span></div><code class="item-code">(list)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#tuples-modal" data-tooltip="فهرست‌های غیرقابل تغییر و مرتب">
-                                <input type="checkbox" class="progress-checkbox" data-item="tuples">
-                                <div class="item-info"><span class="item-number">6</span><span class="item-icon">🔒</span><span class="item-text">تاپل‌ها</span></div><code class="item-code">(tuple)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#dictionaries-modal" data-tooltip="ذخیره داده با کلید-مقدار">
-                                <input type="checkbox" class="progress-checkbox" data-item="dictionaries">
-                                <div class="item-info"><span class="item-number">7</span><span class="item-icon">📖</span><span class="item-text">دیکشنری‌ها</span></div><code class="item-code">(dict)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#sets-modal" data-tooltip="مجموعه‌های بدون تکرار و غیرمرتب">
-                                <input type="checkbox" class="progress-checkbox" data-item="sets">
-                                <div class="item-info"><span class="item-number">8</span><span class="item-icon">🔵</span><span class="item-text">مجموعه‌ها</span></div><code class="item-code">(set)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#comments-modal" data-tooltip="نوشتن توضیحات و کامنت در کد">
-                                <input type="checkbox" class="progress-checkbox" data-item="comments">
-                                <div class="item-info"><span class="item-number">9</span><span class="item-icon">💬</span><span class="item-text">کامنت‌گذاری</span></div><code class="item-code"># """ '''</code>
-                            </li>
-                            <li class="clickable-item quiz-button tooltip" data-modal-target="#question-bank-modal" data-tooltip="تمرین و آزمون دانش شما">
-                                <input type="checkbox" class="progress-checkbox" data-item="question-bank">
-                                <div class="item-info"><span class="item-number">10</span><span class="item-icon">📚</span><span class="item-text">بانک سوالات</span></div>
-                            </li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="io"><a href="#">ورودی و خروجی</a><code>print, input</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="numbers"><a href="#">اعداد</a><code>int, float</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="strings"><a href="#">رشته‌ها</a><code>str</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="booleans"><a href="#">بولین</a><code>bool</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="lists"><a href="#">لیست‌ها</a><code>list</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="tuples"><a href="#">تاپل‌ها</a><code>tuple</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="dictionaries"><a href="#">دیکشنری‌ها</a><code>dict</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="sets"><a href="#">مجموعه‌ها</a><code>set</code></li>
                         </ul>
                     </div>
+                    <div class="card-footer">
+                        <button class="quiz-btn">بانک سوالات</button>
+                    </div>
                 </div>
-                
+
                 <div class="card" id="card-2" data-card-progress="0">
                     <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#operators-overview-modal">عملگرها (کلیک کنید)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-2" style="display: none;">🏆</div>
-                            <span class="card-number">2</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-2"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-2">0/6 تکمیل شده</span>
+                        <div class="card-icon">➕</div>
+                        <h3 class="card-title">عملگرها</h3>
+                        <div class="card-progress-text">0/5</div>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li class="clickable-item tooltip" data-modal-target="#arithmetic-operators-modal" data-tooltip="عملگرهای ریاضی برای محاسبات عددی">
-                                <input type="checkbox" class="progress-checkbox" data-item="arithmetic-operators">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">➕</span><span class="item-text">حسابی</span></div><code class="item-code">%, /, *, -, +</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#comparison-operators-modal" data-tooltip="مقایسه مقادیر و بررسی شرایط">
-                                <input type="checkbox" class="progress-checkbox" data-item="comparison-operators">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">⚖️</span><span class="item-text">مقایسه‌ای</span></div><code class="item-code">==, !=, >, <, >=, <=</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#logical-operators-modal" data-tooltip="ترکیب شرایط با منطق بولین">
-                                <input type="checkbox" class="progress-checkbox" data-item="logical-operators">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">🧠</span><span class="item-text">منطقی</span></div><code class="item-code">and, or, not</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#membership-operators-modal" data-tooltip="بررسی عضویت عناصر در مجموعه‌ها">
-                                <input type="checkbox" class="progress-checkbox" data-item="membership-operators">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">🎯</span><span class="item-text">عضویتی</span></div><code class="item-code">in, not in</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#identity-operators-modal" data-tooltip="بررسی هویت و مرجع اشیاء">
-                                <input type="checkbox" class="progress-checkbox" data-item="identity-operators">
-                                <div class="item-info"><span class="item-number">5</span><span class="item-icon">🆔</span><span class="item-text">هویتی</span></div><code class="item-code">is, is not</code>
-                            </li>
-                            <li class="clickable-item quiz-button tooltip" data-modal-target="#operators-question-bank-modal" data-tooltip="تمرین عملگرها با سوالات متنوع">
-                                <input type="checkbox" class="progress-checkbox" data-item="operators-quiz">
-                                <div class="item-info"><span class="item-number">6</span><span class="item-icon">📚</span><span class="item-text">بانک سوالات</span></div>
-                            </li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="arithmetic"><a href="#">حسابی</a><code>+, -, *, /, %</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="comparison"><a href="#">مقایسه‌ای</a><code>==, !=, &lt;, &gt;</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="logical"><a href="#">منطقی</a><code>and, or, not</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="membership"><a href="#">عضویتی</a><code>in, not in</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="identity"><a href="#">هویتی</a><code>is, is not</code></li>
                         </ul>
                     </div>
+                    <div class="card-footer">
+                        <button class="quiz-btn">بانک سوالات</button>
+                    </div>
                 </div>
-                
+
                 <div class="card" id="card-3" data-card-progress="0">
                     <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#control-structures-overview-modal">ساختارهای کنترلی(کلیک کنید)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-3" style="display: none;">🏆</div>
-                            <span class="card-number">3</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-3"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-3">0/5 تکمیل شده</span>
+                        <div class="card-icon">🔄</div>
+                        <h3 class="card-title">ساختارهای کنترلی</h3>
+                        <div class="card-progress-text">0/4</div>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li class="clickable-item tooltip" data-modal-target="#conditionals-modal" data-tooltip="تصمیم‌گیری با شرط‌های if و else">
-                                <input type="checkbox" class="progress-checkbox" data-item="conditionals">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">❓</span><span class="item-text">شرطی‌ها</span></div><code class="item-code">if, elif, else</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#loops-modal" data-tooltip="تکرار کدها با حلقه‌های for و while">
-                                <input type="checkbox" class="progress-checkbox" data-item="loops">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">🔄</span><span class="item-text">حلقه‌ها</span></div><code class="item-code">for, while</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#break-modal" data-tooltip="خروج زودهنگام از حلقه‌ها">
-                                <input type="checkbox" class="progress-checkbox" data-item="break">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">🛑</span><span class="item-text">توقف با</span></div><code class="item-code">break</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#continue-modal" data-tooltip="رد کردن تکرار جاری و ادامه حلقه">
-                                <input type="checkbox" class="progress-checkbox" data-item="continue">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">✅</span><span class="item-text">ادامه با</span></div><code class="item-code">continue</code>
-                            </li>
-                            <!-- START: دکمه بانک سوالات با استایل طلایی -->
-                            <li class="clickable-item quiz-button tooltip" data-modal-target="#control-structures-question-bank-modal" data-tooltip="تمرین ساختارهای کنترلی">
-                                <input type="checkbox" class="progress-checkbox" data-item="control-structures-quiz">
-                                <div class="item-info">
-                                    <span class="item-number">5</span>
-                                    <span class="item-icon">📚</span>
-                                    <span class="item-text">بانک سوالات</span>
-                                </div>
-                            </li>
-                            <!-- END: دکمه بانک سوالات با استایل طلایی -->
+                            <li><input type="checkbox" class="progress-checkbox" data-item="if"><a href="#">شرطی‌ها</a><code>if, elif, else</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="for"><a href="#">حلقه‌ها</a><code>for, while</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="break"><a href="#">توقف با</a><code>break</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="continue"><a href="#">ادامه با</a><code>continue</code></li>
                         </ul>
                     </div>
+                    <div class="card-footer">
+                        <button class="quiz-btn">بانک سوالات</button>
+                    </div>
                 </div>
-                
+
                 <div class="card" id="card-4" data-card-progress="0">
                     <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#functions-modal">تابع (کلیک کنید)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-4" style="display: none;">🏆</div>
-                            <span class="card-number">4</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-4"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-4">0/6 تکمیل شده</span>
+                        <div class="card-icon">📦</div>
+                        <h3 class="card-title">ماژول‌ها و پکیج‌ها</h3>
+                        <div class="card-progress-text">0/3</div>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li class="clickable-item tooltip" data-modal-target="#functions-def-modal" data-tooltip="ساخت توابع سفارشی با def">
-                                <input type="checkbox" class="progress-checkbox" data-item="functions-def">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">🛠️</span><span class="item-text">تعریف با</span></div><code class="item-code">def</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#parameters-arguments-modal" data-tooltip="ارسال و دریافت داده‌ها در توابع">
-                                <input type="checkbox" class="progress-checkbox" data-item="parameters-arguments">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">📥</span><span class="item-text">پارامترها و آرگومان‌ها</span></div>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#return-values-modal" data-tooltip="بازگرداندن نتیجه از توابع">
-                                <input type="checkbox" class="progress-checkbox" data-item="return-values">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">📤</span><span class="item-text">مقادیر بازگشتی</span></div><code class="item-code">(return)</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#lambda-functions-modal" data-tooltip="توابع کوتاه و بی‌نام">
-                                <input type="checkbox" class="progress-checkbox" data-item="lambda-functions">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">⚡️</span><span class="item-text">توابع لامبدا</span></div><code class="item-code">lambda</code>
-                            </li>
-                            <li class="clickable-item tooltip" data-modal-target="#error-exception-management-modal" data-tooltip="مدیریت خطاها و جلوگیری از crash">
-                                <input type="checkbox" class="progress-checkbox" data-item="error-exception-management">
-                                <div class="item-info"><span class="item-number">5</span><span class="item-icon">⚠️</span><span class="item-text">مدیریت خطاها و استثناها</span></div><code class="item-code">try/except</code>
-                            </li>
-                            <li class="clickable-item quiz-button tooltip" data-modal-target="#functions-question-bank-modal" data-tooltip="تمرین نوشتن و استفاده از توابع">
-                                <input type="checkbox" class="progress-checkbox" data-item="functions-quiz">
-                                <div class="item-info"><span class="item-number">6</span><span class="item-icon">📚</span><span class="item-text">بانک سوالات</span></div>
-                            </li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="import"><a href="#">وارد کردن با</a><code>import</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="math"><a href="#">ماژول‌های ریاضی</a><code>math, random</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="pip"><a href="#">نصب با</a><code>pip</code></li>
                         </ul>
                     </div>
-                </div>
-                
-                <!-- Input Output Modal -->
-                <div class="modal-overlay" id="input-output-modal">
-                    <div class="modal-content">
-                        <button class="modal-close-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
-                        <article class="modal-article">
-                            <h3>⌨️ ورودی و خروجی در پایتون</h3>
-                            
-                            <h4>📤 خروجی (چاپ) با print()</h4>
-                            <p>تابع <code>print()</code> برای نمایش اطلاعات در صفحه خروجی (ترمینال یا کنسول) استفاده می‌شود.</p>
-                            
-                            <h5>🔹 مثال ساده:</h5>
-                            <pre><code>print("سلام دنیا")</code></pre>
-                            <p><strong>خروجی:</strong></p>
-                            <pre><code>سلام دنیا</code></pre>
-
-                            <hr>
-
-                            <h5>🔹 چاپ چند مقدار با کاما:</h5>
-                            <pre><code>name = "Ali"
-age = 25
-print("نام:", name, "سن:", age)</code></pre>
-                            <p><strong>خروجی:</strong></p>
-                            <pre><code>نام: Ali سن: 25</code></pre>
-
-                            <hr>
-
-                            <h5>🔹 استفاده از f-string (فرمت‌گذاری پیشرفته):</h5>
-                            <pre><code>name = "Sara"
-age = 22
-print(f"سلام {name}! سن شما {age} سال است.")</code></pre>
-                            <p><strong>خروجی:</strong></p>
-                            <pre><code>سلام Sara! سن شما 22 سال است.</code></pre>
-                            <p><strong>💡 نکته:</strong> f-string از پایتون 3.6 به بعد معرفی شده و بسیار محبوبه.</p>
-
-                            <hr>
-
-                            <h4>⚙️ پارامترهای مهم print()</h4>
-                            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                                <tr style="background: #f8f9fa;">
-                                    <th style="border: 1px solid #ddd; padding: 8px;">پارامتر</th>
-                                    <th style="border: 1px solid #ddd; padding: 8px;">کاربرد</th>
-                                    <th style="border: 1px solid #ddd; padding: 8px;">مثال</th>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>sep</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">جداکننده بین موارد</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>print("A", "B", "C", sep="-")</code> → A-B-C</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>end</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">کاراکتری که بعد از چاپ میاد (پیش‌فرض \n)</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>print("Hello", end=" ")</code></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>flush</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">برای اطمینان از چاپ فوری</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">کاربرد در سیستم‌های خاص</td>
-                                </tr>
-                            </table>
-
-                            <hr>
-
-                            <h4>📥 ورودی گرفتن با input()</h4>
-                            <p>تابع <code>input()</code> از کاربر مقدار دریافت می‌کنه. <strong>همیشه مقدار را به صورت رشته (str) برمی‌گردونه.</strong></p>
-                            
-                            <h5>🔹 مثال ساده:</h5>
-                            <pre><code>name = input("نام شما چیست؟ ")
-print("سلام", name)</code></pre>
-
-                            <hr>
-
-                            <h5>🔹 تبدیل ورودی به عدد:</h5>
-                            <pre><code>age = int(input("سن خود را وارد کنید: "))
-print("سال آینده شما", age + 1, "ساله خواهید بود.")</code></pre>
-                            <p><strong>⚠️ توجه:</strong> اگر تبدیل انجام نشه، مقدار هنوز رشته است و نمی‌شه با عددها محاسبه کرد.</p>
-
-                            <hr>
-
-                            <h5>🔹 گرفتن عدد اعشاری:</h5>
-                            <pre><code>weight = float(input("وزن خود را وارد کنید (کیلوگرم): "))
-print("وزن شما:", weight, "کیلوگرم است.")</code></pre>
-
-                            <hr>
-
-                            <h5>🔹 گرفتن چند مقدار با یک خط:</h5>
-                            <pre><code>x, y = input("دو عدد با فاصله وارد کن: ").split()
-x = int(x)
-y = int(y)
-print("جمع:", x + y)</code></pre>
-
-                            <hr>
-
-                            <h4>💪 تمرین‌های پیشنهادی:</h4>
-                            <ol>
-                                <li>از کاربر نام و سن بپرس و به‌صورت <code>سلام {نام}، شما {سن} سال دارید.</code> چاپ کن.</li>
-                                <li>عددی از کاربر بگیر و بگو که آیا آن عدد زوج است یا فرد.</li>
-                                <li>دو عدد اعشاری بگیر و میانگین آن‌ها را محاسبه و چاپ کن.</li>
-                                <li>یک رشته از کاربر بگیر و آن را برعکس (reverse) چاپ کن.</li>
-                                <li>برنامه‌ای بنویس که نمره دانش‌آموز را بگیرد و بگوید آیا قبول شده (>=10) یا نه.</li>
-                            </ol>
-
-                            <hr>
-
-                            <h4>📊 جمع‌بندی سریع:</h4>
-                            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                                <tr style="background: #f8f9fa;">
-                                    <th style="border: 1px solid #ddd; padding: 8px;">تابع</th>
-                                    <th style="border: 1px solid #ddd; padding: 8px;">کاربرد</th>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>print()</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">نمایش داده‌ها در خروجی (کنسول)</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>input()</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">گرفتن داده از کاربر (همیشه str)</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>int(input())</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">تبدیل ورودی به عدد صحیح</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>float(input())</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">تبدیل ورودی به عدد اعشاری</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>f"..."</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">روش قالب‌بندی حرفه‌ای متن در چاپ</td>
-                                </tr>
-                            </table>
-                        </article>
+                    <div class="card-footer">
+                        <button class="quiz-btn">بانک سوالات</button>
                     </div>
                 </div>
 
-                <!-- Comments Modal -->
-                <div class="modal-overlay" id="comments-modal">
-                    <div class="modal-content">
-                        <button class="modal-close-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
-                        <article class="modal-article">
-                            <h3>💬 کامنت‌گذاری در پایتون</h3>
-                            
-                            <h4>🔍 کامنت چیست؟</h4>
-                            <p>کامنت‌ها توضیحاتی هستند که داخل کد نوشته می‌شوند ولی توسط پایتون اجرا نمی‌شوند.</p>
-                            <ul>
-                                <li>فقط برای برنامه‌نویسان و توسعه‌دهندگان هستند</li>
-                                <li>برای توضیح منطق کد، راهنما یا غیرفعال کردن موقتی خطوط استفاده می‌شن</li>
-                                <li>در خروجی هیچ اثری از کامنت نیست</li>
-                            </ul>
-
-                            <hr>
-
-                            <h4>📝 انواع کامنت در پایتون</h4>
-                            
-                            <h5>1️⃣ کامنت تک‌خطی (Single-line Comment)</h5>
-                            <pre><code># این یک کامنت ساده است
-x = 10  # مقدار اولیه برای x</code></pre>
-                            <p>هر چیزی بعد از # در یک خط کامنت حساب می‌شه.</p>
-
-                            <h5>2️⃣ کامنت چندخطی (Multi-line Comment)</h5>
-                            <p>در پایتون چیزی به اسم کامنت چندخطی واقعی نداریم مثل زبان‌های دیگر اما می‌تونیم از سه‌تا کوتیشن استفاده کنیم:</p>
-                            <pre><code>"""
-این یک کامنت چندخطی است
-که برای توضیح طولانی‌تر استفاده می‌شود.
-"""</code></pre>
-                            <p>یا:</p>
-                            <pre><code>'''
-این هم کامنت چندخطی با کوتیشن تکی است
-'''</code></pre>
-                            <p><strong>توجه:</strong> این روش در واقع یک رشته (string) بدون استفاده است. در اجرا مشکلی ایجاد نمی‌کند ولی روش رسمی نیست. برای داکیومنتیشن هم استفاده می‌شود.</p>
-
-                            <hr>
-
-                            <h4>🎯 چرا کامنت‌گذاری مهم است؟</h4>
-                            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                                <tr style="background: #f8f9fa;">
-                                    <th style="border: 1px solid #ddd; padding: 8px;">دلیل</th>
-                                    <th style="border: 1px solid #ddd; padding: 8px;">توضیح</th>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">فهم راحت‌تر کد</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">مخصوصا در پروژه‌های تیمی یا برای آینده خودت</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">مستندسازی</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">توضیح ورودی‌ها، خروجی‌ها و عملکرد توابع</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">دیباگ راحت‌تر</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">می‌تونی خطوطی از کد رو موقتا غیرفعال کنی</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">حرفه‌ای‌بودن</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">کدی که مستند و خواناست ارزش بیشتری داره</td>
-                                </tr>
-                            </table>
-
-                            <hr>
-
-                            <h4>⭐ نکات مهم در کامنت‌گذاری حرفه‌ای:</h4>
-                            <ol>
-                                <li><strong>مختصر، مفید و واضح بنویس</strong></li>
-                                <li><strong>از نوشتن توضیح اضافه برای چیزهای واضح خودداری کن</strong>
-                                    <ul>
-                                        <li>✅ درست: <code># تقسیم بر تعداد برای میانگین</code></li>
-                                        <li>❌ نادرست: <code># تقسیم</code></li>
-                                    </ul>
-                                </li>
-                                <li><strong>بالای توابع، کلاس‌ها و بخش‌های پیچیده توضیح بده</strong></li>
-                                <li><strong>از کامنت برای مشخص‌کردن TODO یا BUG هم استفاده کن</strong></li>
-                            </ol>
-
-                            <hr>
-
-                            <h4>📋 مثال کامل:</h4>
-                            <pre><code># تابعی برای محاسبه فاکتوریل
-def factorial(n):
-    """
-    ورودی: n عدد صحیح
-    خروجی: فاکتوریل n
-    """
-    if n == 0:
-        return 1  # فاکتوریل صفر برابر 1 است
-    return n * factorial(n - 1)</code></pre>
-
-                            <hr>
-
-                            <h4>🏷️ TODO / NOTE / FIXME در کامنت‌ها</h4>
-                            <p>برای همکاری بهتر در تیم‌ها از این تگ‌ها استفاده می‌شه:</p>
-                            <pre><code># TODO: اضافه کردن بررسی برای ورودی منفی
-# NOTE: این تابع فقط برای اعداد طبیعی استفاده می‌شه
-# FIXME: با ورودی صفر کرش می‌کنه</code></pre>
-
-                            <hr>
-
-                            <h4>💪 تمرین پیشنهادی:</h4>
-                            <ol>
-                                <li>یک تابع ساده بنویس که عددی را دو برابر می‌کند. بالا و داخل آن کامنت توضیح بنویس.</li>
-                                <li>تابعی بنویس که لیستی را مرتب می‌کند و کامنت‌گذاری کن که چه الگوریتمی استفاده شده (مثلا Bubble Sort).</li>
-                                <li>برنامه‌ای بنویس که نام و سن را دریافت کند. کامنتی بنویس که هدف برنامه چیست.</li>
-                                <li>یک کلاس ساده مثل Car بنویس و تمام ویژگی‌ها و متدهایش را با کامنت توضیح بده.</li>
-                            </ol>
-
-                            <hr>
-
-                            <h4>📊 جمع‌بندی سریع:</h4>
-                            <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
-                                <tr style="background: #f8f9fa;">
-                                    <th style="border: 1px solid #ddd; padding: 8px;">مفهوم</th>
-                                    <th style="border: 1px solid #ddd; padding: 8px;">توضیح</th>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>#</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">برای نوشتن کامنت تک‌خطی استفاده می‌شود</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><code>''' ... '''</code> یا <code>""" ... """</code></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">برای نوشتن توضیح چندخطی یا docstring</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">مزیت کامنت</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">مستندسازی، فهم بهتر، دیباگ راحت‌تر، حرفه‌ای شدن</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">نکته مهم</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">مختصر، مفید و فقط وقتی لازم است</td>
-                                </tr>
-                            </table>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="modal-overlay" id="control-structures-question-bank-modal">
-                    <div class="modal-content">
-                        <button class="modal-close-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
-                        <article class="modal-article">
-                            <h3>بانک سوالات - ساختارهای کنترلی</h3>
-                            <h4>1️⃣  شرطی‌ها (if, elif, else)</h4>
-                            <ol>
-                                <li>عددی از کاربر بگیر، اگر مثبت بود چاپ کن "عدد مثبت است".</li>
-                                <li>بررسی کن آیا عدد وارد شده زوج است یا فرد.</li>
-                                <li>برنامه‌ای بنویس که اگر سن کاربر بالای ۱۸ بود، پیام "ورود مجاز است" چاپ شود.</li>
-                                <li>سه عدد بگیر و بزرگ‌ترین آن‌ها را مشخص کن.</li>
-                                <li>برنامه‌ای بنویس که نمره‌ای بگیرد و براساس نمره، وضعیت (عالی، خوب، قابل قبول، مردود) چاپ کند.</li>
-                                <li>اگر رشته‌ای خالی بود، پیام "هیچ متنی وارد نشده" چاپ کن.</li>
-                                <li>برنامه‌ای بنویس که سال را بگیرد و بررسی کند آیا کبیسه است یا نه.</li>
-                                <li>بررسی کن اگر دو عدد برابر بودند، بنویس "مساوی‌اند"، در غیر این صورت تفاوت را چاپ کن.</li>
-                                <li>برنامه‌ای بنویس که اگر کاربر نام کاربری و رمز درست وارد کرد، وارد شود.</li>
-                                <li>بررسی کن آیا طول یک کلمه بیشتر از ۵ کاراکتر است.</li>
-                                <li>برنامه‌ای بنویس که اگر سن بین ۱۳ تا ۱۹ بود، چاپ کند "نوجوان".</li>
-                                <li>بررسی کن اگر ورودی از نوع عدد صحیح نبود، خطا چاپ شود.</li>
-                                <li>برنامه‌ای که کاربر جنسیت وارد کند، اگر "m" بود بگو "آقا"، اگر "f" بود بگو "خانم".</li>
-                                <li>برنامه‌ای که اگر کاربر چیزی وارد نکرد، برنامه پیام "ورودی خالی" بدهد.</li>
-                                <li>بررسی کن آیا عدد وارد شده مضرب ۳ یا مضرب ۵ هست.</li>
-                            </ol>
-                            <hr>
-                            <h4>2️⃣  حلقه‌ها (for, while)</h4>
-                            <ol>
-                                <li>با for اعداد ۰ تا ۹ را چاپ کن.</li>
-                                <li>با while از عدد ۱ تا ۵ چاپ کن.</li>
-                                <li>برنامه‌ای بنویس که اعداد بین ۱ تا ۱۰ را دوبرابر کند و چاپ کند.</li>
-                                <li>با for روی لیستی از نام‌ها حلقه بزن و سلام بده.</li>
-                                <li>با while اعداد مثبت را از کاربر بگیر و جمع بزن تا کاربر صفر وارد کند.</li>
-                                <li>برنامه‌ای بنویس که جمع اعداد از ۱ تا ۱۰۰ را محاسبه کند.</li>
-                                <li>برنامه‌ای که کاراکترهای یک رشته را یکی‌یکی چاپ کند.</li>
-                                <li>با for فقط اعداد زوج بین ۱ تا ۲۰ را چاپ کن.</li>
-                                <li>برنامه‌ای بنویس که از کاربر رشته بگیرد و تعداد حروف را بشمارد.</li>
-                                <li>با while بررسی کن کاربر رمز را درست وارد کرده یا نه، تا درست وارد نکرده حلقه ادامه یابد.</li>
-                                <li>لیستی از نمرات را بگیر و تعداد نمرات بالای ۱۵ را بشمار.</li>
-                                <li>با for بررسی کن آیا عدد خاصی در لیست هست یا نه.</li>
-                                <li>برنامه‌ای بنویس که مجموع اعداد فرد بین ۱ تا ۱۰۰ را چاپ کند.</li>
-                                <li>برنامه‌ای که ۵ بار از کاربر عدد بگیرد و میانگین را حساب کند.</li>
-                                <li>با while از کاربر کلمات بگیر، تا وقتی "پایان" نگفته، ادامه دهد.</li>
-                            </ol>
-                            <hr>
-                            <h4>3️⃣  توقف با break</h4>
-                            <ol>
-                                <li>با for اعداد ۰ تا ۱۰ را چاپ کن ولی وقتی به ۵ رسید، متوقف شو.</li>
-                                <li>برنامه‌ای بنویس که از کاربر عدد بگیرد، وقتی عدد منفی وارد شد، break بزن.</li>
-                                <li>برنامه‌ای که روی یک لیست بگردد و وقتی مقدار خاصی پیدا شد، حلقه متوقف شود.</li>
-                                <li>برنامه‌ای بنویس که عددی از کاربر بگیرد، اگر مضرب ۷ بود، حلقه را متوقف کند.</li>
-                                <li>با while از کاربر کلمات بگیر و اگر کلمه "خروج" وارد شد، break اجرا شود.</li>
-                                <li>برنامه‌ای که بررسی کند آیا عدد خاصی در لیست وجود دارد یا نه، با break.</li>
-                                <li>لیستی از رشته‌ها را بگرد، اگر به "error" رسیدی، حلقه را متوقف کن.</li>
-                                <li>با for روی اعداد بین ۱ تا ۲۰ بگرد و وقتی اولین عدد زوج پیدا شد، break بزن.</li>
-                                <li>حلقه‌ای بساز که از کاربر رمز بگیرد تا زمانی که درست وارد شود یا ۳ بار اشتباه کرده باشد.</li>
-                                <li>برنامه‌ای که کاربر اعداد وارد کند، اگر مجموع آن‌ها از ۱۰۰ بیشتر شد، break.</li>
-                                <li>حلقه‌ای برای چک کردن موجود بودن کالا در لیست، اگر نبود، متوقف شود.</li>
-                                <li>برنامه‌ای که بررسی کند آیا عدد وارد شده تکراری است، اگر بود، break.</li>
-                                <li>از لیست اعداد، اولین عدد منفی را پیدا کن و حلقه را متوقف کن.</li>
-                                <li>برنامه‌ای که در لیست قیمت‌ها اگر قیمتی بالای ۱۰۰۰ بود، حلقه را متوقف کند.</li>
-                                <li>برنامه‌ای که از کاربر جمله بگیرد و اگر کلمه "بس" در آن بود، دیگر سوال نپرسد.</li>
-                            </ol>
-                            <hr>
-                            <h4>4️⃣ ✅ ادامه با continue</h4>
-                            <ol>
-                                <li>با for اعداد ۰ تا ۵ را چاپ کن، به جز عدد ۲.</li>
-                                <li>برنامه‌ای که فقط نمرات بالای ۱۰ را چاپ کند و بقیه را با continue رد کند.</li>
-                                <li>از کاربر ۵ عدد بگیر، اگر عدد صفر وارد کرد، چاپ نکن (ردش کن).</li>
-                                <li>لیستی از رشته‌ها داشته باش، فقط مواردی که خالی نیستند را چاپ کن.</li>
-                                <li>برنامه‌ای که فقط اعداد فرد بین ۱ تا ۱۰ را چاپ کند.</li>
-                                <li>برنامه‌ای که هنگام خواندن لیست قیمت‌ها، قیمت‌های صفر را رد کند.</li>
-                                <li>با while از کاربر عدد بگیر و اگر عدد منفی وارد کرد، ردش کند و عدد بعدی را بگیرد.</li>
-                                <li>بررسی کن اگر لیستی مقدار None داشت، آن را چاپ نکند.</li>
-                                <li>در لیستی از نام‌ها، فقط نام‌هایی که با حرف "A" شروع می‌شوند را چاپ کن.</li>
-                                <li>از کاربر کلمه بگیر، اگر بیشتر از ۱۰ کاراکتر بود، چاپ نکن (با continue).</li>
-                                <li>برنامه‌ای که حروف صدادار را در رشته رد کند و فقط حروف بی‌صدا را چاپ کند.</li>
-                                <li>برنامه‌ای که هنگام پیمایش لیست اعداد، فقط مقادیر مثبت را نمایش دهد.</li>
-                                <li>برنامه‌ای بنویس که هنگام پردازش لیست اعداد، مقادیر تکراری را با continue رد کند.</li>
-                                <li>برنامه‌ای که از کاربر عدد بگیرد، فقط اعداد زوج را نگه دارد.</li>
-                                <li>حلقه‌ای که ۱۰ بار اجرا شود ولی فقط در تکرارهای فرد کاری انجام دهد.</li>
-                            </ol>
-                        </article>
-                    </div>
-                </div>
-                
                 <div class="card" id="card-5" data-card-progress="0">
                     <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#modules-overview-modal">ماژول‌ها و پکیج‌ها (کلیک کنید)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-5" style="display: none;">🏆</div>
-                            <span class="card-number">5</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-5"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-5">0/4 تکمیل شده</span>
+                        <div class="card-icon">📁</div>
+                        <h3 class="card-title">کار با فایل‌ها</h3>
+                        <div class="card-progress-text">0/3</div>
                     </div>
                     <div class="card-body">
                         <ul>
-                            <li class="clickable-item" data-modal-target="#import-modules-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="import-modules">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">📦</span><span class="item-text">وارد کردن با</span></div><code class="item-code">import</code>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#using-modules-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="using-modules">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">🧩</span><span class="item-text">استفاده از ماژول‌های ریاضی</span></div>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#pip-install-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="pip-install">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">🌐</span><span class="item-text">نصب پکیج‌های ثالث با</span></div><code class="item-code">pip</code>
-                            </li>
-                            <li class="clickable-item quiz-button" data-modal-target="#modules-question-bank-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="modules-quiz">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">📚</span><span class="item-text">بانک سوالات</span></div>
-                            </li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="read"><a href="#">خواندن</a><code>open, read</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="write"><a href="#">نوشتن</a><code>write, close</code></li>
+                            <li><input type="checkbox" class="progress-checkbox" data-item="with"><a href="#">مدیریت با</a><code>with open</code></li>
                         </ul>
                     </div>
-                </div>
-                
-                <div class="card" id="card-6" data-card-progress="0">
-                    <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#files-overview-modal">کار با فایل‌ها (کلیک کنید)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-6" style="display: none;">🏆</div>
-                            <span class="card-number">6</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-6"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-6">0/4 تکمیل شده</span>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li class="clickable-item" data-modal-target="#reading-files-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="reading-files">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">📖</span><span class="item-text">خواندن</span></div>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#writing-files-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="writing-files">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">✍️</span><span class="item-text">نوشتن</span></div>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#with-open-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="with-open">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">🔐</span><span class="item-text">مدیریت بهتر با</span></div><code class="item-code">with open(...)</code>
-                            </li>
-                            <li class="clickable-item quiz-button" data-modal-target="#files-question-bank-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="files-quiz">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">📚</span><span class="item-text">بانک سوالات</span></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="card" id="card-7" data-card-progress="0">
-                    <div class="card-header">
-                        <h3 class="card-title clickable-item" data-modal-target="#oop-overview-modal">برنامه‌نویسی شیء‌گرا (OOP) (کلیک)</h3>
-                        <div class="card-badges">
-                            <div class="achievement-badge" id="badge-7" style="display: none;">🏆</div>
-                            <span class="card-number">7</span>
-                        </div>
-                    </div>
-                    <div class="card-progress">
-                        <div class="card-progress-bar">
-                            <div class="card-progress-fill" id="progress-card-7"></div>
-                        </div>
-                        <span class="card-progress-text" id="progress-text-7">0/6 تکمیل شده</span>
-                    </div>
-                    <div class="card-body">
-                        <ul>
-                            <li class="clickable-item" data-modal-target="#classes-intro-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="classes-intro">
-                                <div class="item-info"><span class="item-number">1</span><span class="item-icon">🏗️</span><span class="item-text">معرفی کلاس‌ها</span></div><code class="item-code">(class)</code>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#objects-creation-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="objects-creation">
-                                <div class="item-info"><span class="item-number">2</span><span class="item-icon">👨‍💻</span><span class="item-text">ساخت اشیاء</span></div><code class="item-code">(Objects)</code>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#inheritance-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="inheritance">
-                                <div class="item-info"><span class="item-number">3</span><span class="item-icon">🧬</span><span class="item-text">وراثت</span></div><code class="item-code">(Inheritance)</code>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#encapsulation-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="encapsulation">
-                                <div class="item-info"><span class="item-number">4</span><span class="item-icon">🔒</span><span class="item-text">کپسوله‌سازی</span></div><code class="item-code">(Encapsulation)</code>
-                            </li>
-                            <li class="clickable-item" data-modal-target="#polymorphism-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="polymorphism">
-                                <div class="item-info"><span class="item-number">5</span><span class="item-icon">🎭</span><span class="item-text">پلی‌مورفیسم</span></div><code class="item-code">(Polymorphism)</code>
-                            </li>
-                            <li class="clickable-item quiz-button" data-modal-target="#oop-question-bank-modal">
-                                <input type="checkbox" class="progress-checkbox" data-item="oop-quiz">
-                                <div class="item-info"><span class="item-number">6</span><span class="item-icon">📚</span><span class="item-text">بانک سوالات</span></div>
-                            </li>
-                        </ul>
+                    <div class="card-footer">
+                        <button class="quiz-btn">بانک سوالات</button>
                     </div>
                 </div>
             </main>
         </div>
-        
-        <!-- Navigation Controls -->
-        <div class="navigation-controls">
-            <button class="nav-btn prev-btn" id="prev-btn" disabled>
-                <span>⬅️</span>
-                <span>قبلی</span>
-            </button>
-            <button class="nav-btn next-btn" id="next-btn">
-                <span>بعدی</span>
-                <span>➡️</span>
-            </button>
-        </div>
-        
-        <!-- Footer -->
+
+        <section class="python-editor-section">
+            <div class="editor-header">
+                <h3>ادیتور آنلاین پایتون</h3>
+                <div class="editor-buttons">
+                    <button id="run-code-btn">اجرای کد</button>
+                    <button id="clear-code-btn">پاک کردن</button>
+                </div>
+            </div>
+            <textarea id="python-code-editor" placeholder="کد خود را اینجا بنویسید..."></textarea>
+            <div class="output-header">خروجی:</div>
+            <div id="python-output"></div>
+        </section>
+
         <footer class="main-footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>لینک‌های مفید</h4>
-                    <ul>
-                        <li><a href="https://python.org" target="_blank">وب‌سایت رسمی پایتون</a></li>
-                        <li><a href="https://docs.python.org" target="_blank">مستندات پایتون</a></li>
-                        <li><a href="https://pypi.org" target="_blank">PyPI - مخزن پکیج‌ها</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>آمار یادگیری</h4>
-                    <div class="stats">
-                        <div class="stat-item">
-                            <span class="stat-number" id="completed-sections">0</span>
-                            <span class="stat-label">بخش تکمیل شده</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" id="total-sections">37</span>
-                            <span class="stat-label">کل بخش‌ها</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>تماس با ما</h4>
-                   <h3> <p>نویسنده: Ehsan Koohpayeh</p> </h3>
-                </div>
+            <div class="footer-links">
+                <h4>لینک‌های مفید</h4>
+                <ul>
+                    <li><a href="#">مستندات پایتون</a></li>
+                    <li><a href="#">انجمن پایتون</a></li>
+                    <li><a href="#">پروژه‌های پایتون</a></li>
+                </ul>
+            </div>
+            <div class="footer-about">
+                <h4>درباره پروژه</h4>
+                <p>این پروژه یک نقشه راه برای یادگیری سینتکس پایتون است.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>تماس با ما</h4>
+                <p>ehsan212i@gmail.com</p>
             </div>
         </footer>
-        
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu-overlay" id="mobile-menu-overlay">
-            <div class="mobile-menu">
-                <div class="mobile-menu-header">
-                    <h3>منوی اصلی</h3>
-                    <button class="close-mobile-menu" id="close-mobile-menu">✕</button>
-                </div>
-                <div class="mobile-menu-content">
-                    <a href="#card-1" class="mobile-menu-item">1. متغیرها و انواع داده‌ها</a>
-                    <a href="#card-2" class="mobile-menu-item">2. عملگرها</a>
-                    <a href="#card-3" class="mobile-menu-item">3. ساختارهای کنترلی</a>
-                    <a href="#card-4" class="mobile-menu-item">4. توابع</a>
-                    <a href="#card-5" class="mobile-menu-item">5. ماژول‌ها و پکیج‌ها</a>
-                    <a href="#card-6" class="mobile-menu-item">6. کار با فایل‌ها</a>
-                    <a href="#card-7" class="mobile-menu-item">7. برنامه‌نویسی شیء‌گرا</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Floating Elements -->
-        <div class="floating-elements">
-            <div class="floating-element" style="--delay: 0s;">💻</div>
-            <div class="floating-element" style="--delay: 2s;">🐍</div>
-            <div class="floating-element" style="--delay: 4s;">📚</div>
-            <div class="floating-element" style="--delay: 6s;">⚡</div>
-            <div class="floating-element" style="--delay: 8s;">🚀</div>
-        </div>
     </div>
 
     <!-- Modals START -->
